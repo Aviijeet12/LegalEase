@@ -1,0 +1,25 @@
+{
+  "project_info": {
+    "project_id": "nyayasetu-app-demo",
+    "project_number": "1234567890",
+    "name": "NyayaSetu Demo"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1234567890:android:abcdef123456",
+        "android_client_info": {
+          "package_name": "com.nyayasetu.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [{"current_key": "AIzaSyD-EXAMPLEKEY1234567890abcdefg"}],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

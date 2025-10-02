@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:gravity="center">
+
+    <!-- Title -->
+    <TextView
+        android:id="@+id/titleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome to LegalConnect"
+        android:textColor="#333333"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginBottom="24dp" />
+
+    <!-- Description -->
+    <TextView
+        android:id="@+id/descriptionText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Connect with qualified lawyers and\nmanage your legal cases with ease and\nconfidence."
+        android:textColor="#666666"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:lineSpacingExtra="4dp"
+        android:layout_marginBottom="40dp" />
+
+    <!-- Image Placeholder (Text representation) -->
+    <TextView
+        android:id="@+id/imageText"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:text="legal consultation"
+        android:textColor="#999999"
+        android:textSize="14sp"
+        android:gravity="center"
+        android:background="#F5F5F5"
+        android:layout_marginBottom="40dp" />
+
+    <!-- Next/Get Started Button -->
+    <Button
+        android:id="@+id/nextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Next"
+        android:textColor="#FFFFFF"
+        android:background="#2196F3"
+        android:paddingStart="32dp"
+        android:paddingEnd="32dp"
+        android:textAllCaps="false"
+        android:textSize="16sp" />
+
+</LinearLayout>
