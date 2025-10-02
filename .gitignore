@@ -247,3 +247,11 @@ Thumbs.db
 
 # Upload directories
 uploads/
+
+# Java heap dumps
+*.hprof
+
+# Large files and dumps
+*.dump
+*.bin
+*.dmp
