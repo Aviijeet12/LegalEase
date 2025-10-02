@@ -43,9 +43,17 @@ const limiter = rateLimit({
 app.use(limiter);
 
 // CORS
+const allowedOrigins = [
+  "http://localhost:3000",
+  "https://legalease-frontend.render.com",
+  process.env.CLIENT_URL
+].filter(Boolean);
+
 app.use(cors({
-  origin: process.env.CLIENT_URL || "http://localhost:3000",
-  credentials: true
+  origin: allowedOrigins,
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
 // Body parser middleware
@@ -87,7 +95,17 @@ io.on('connection', (socket) => {
   });
 });
 
-// Health check route
+// Health check route for Render
+app.get('/health', (req, res) => {
+  res.status(200).json({
+    status: 'healthy',
+    message: 'LegalEase API is running',
+    timestamp: new Date().toISOString(),
+    uptime: process.uptime()
+  });
+});
+
+// API health check route
 app.get('/api/health', (req, res) => {
   res.json({
     success: true,

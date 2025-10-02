@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: legalease-backend
+    env: node
+    plan: free
+    buildCommand: cd NyayaSetu-backend && npm install
+    startCommand: cd NyayaSetu-backend && npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+databases:
+  - name: legalease-mongodb
+    databaseName: legalease
+    user: legalease-user
