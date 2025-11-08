@@ -6,19 +6,15 @@ import android.security.keystore.KeyGenParameterSpec
 import android.security.keystore.KeyProperties
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKey
-import dagger.hilt.android.qualifiers.ApplicationContext
 import java.security.KeyStore
 import javax.crypto.Cipher
 import javax.crypto.KeyGenerator
 import javax.crypto.SecretKey
 import javax.crypto.spec.GCMParameterSpec
-import javax.inject.Inject
-import javax.inject.Singleton
 import android.util.Base64
 
-@Singleton
-class EncryptionManager @Inject constructor(
-    @ApplicationContext private val context: Context
+class EncryptionManager(
+    private val context: Context
 ) {
     private val keyStore = KeyStore.getInstance("AndroidKeyStore").apply { load(null) }
     private val encryptedPrefs by lazy { createEncryptedSharedPreferences() }

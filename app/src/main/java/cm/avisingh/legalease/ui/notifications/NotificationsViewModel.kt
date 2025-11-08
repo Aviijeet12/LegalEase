@@ -1,21 +1,13 @@
-package cm.avisingh.legalease.ui.notifications
+﻿package cm.avisingh.legalease.ui.notifications
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import cm.avisingh.legalease.notifications.InAppNotification
-import cm.avisingh.legalease.notifications.NotificationRepository
-import dagger.hilt.android.lifecycle.HiltViewModel
+import cm.avisingh.legalease.security.InAppNotification
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
-@HiltViewModel
-class NotificationsViewModel @Inject constructor(
-    private val notificationRepository: NotificationRepository
-) : ViewModel() {
+class NotificationsViewModel : ViewModel() {
 
     private val _notificationState = MutableStateFlow<NotificationState>(NotificationState.Loading)
     val notificationState: StateFlow<NotificationState> = _notificationState
@@ -34,41 +26,27 @@ class NotificationsViewModel @Inject constructor(
     private fun loadNotifications() {
         viewModelScope.launch {
             _isLoading.value = true
-            notificationRepository.getAllNotifications()
-                .catch { e ->
-                    _notificationState.value = NotificationState.Error(
-                        e.message ?: "An error occurred"
-                    )
-                }
-                .map { notifications ->
-                    if (notifications.isEmpty()) {
-                        NotificationState.Empty
-                    } else {
-                        NotificationState.Success(notifications)
-                    }
-                }
-                .collect { state ->
-                    _notificationState.value = state
-                    _isLoading.value = false
-                }
+            // TODO: Load from repository when NotificationRepository is complete
+            _notificationState.value = NotificationState.Empty
+            _isLoading.value = false
         }
     }
 
-    fun markAsRead(notificationId: Long) {
+    fun markAsRead(notificationId: String) {
         viewModelScope.launch {
-            notificationRepository.markAsRead(notificationId)
+            // TODO: Implement when NotificationRepository is complete
         }
     }
 
     fun markAllAsRead() {
         viewModelScope.launch {
-            notificationRepository.markAllAsRead()
+            // TODO: Implement when NotificationRepository is complete
         }
     }
 
-    fun deleteNotification(notificationId: Long) {
+    fun deleteNotification(notificationId: String) {
         viewModelScope.launch {
-            notificationRepository.deleteNotification(notificationId)
+            // TODO: Implement when NotificationRepository is complete
         }
     }
 }

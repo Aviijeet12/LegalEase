@@ -2,9 +2,6 @@ package cm.avisingh.legalease.service
 
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
-import cm.avisingh.legalease.data.repository.NotificationRepository
-import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
@@ -13,24 +10,22 @@ import android.content.Intent
 import android.os.Build
 import androidx.core.app.NotificationCompat
 import cm.avisingh.legalease.R
-import cm.avisingh.legalease.ui.main.MainActivity
+import cm.avisingh.legalease.activities.MainActivity
+import cm.avisingh.legalease.notifications.NotificationChannelManager
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-@AndroidEntryPoint
 class LegalEaseMessagingService : FirebaseMessagingService() {
 
-    @Inject
-    lateinit var notificationRepository: NotificationRepository
+    // TODO: Inject NotificationRepository when Hilt is re-enabled
+    // private lateinit var notificationRepository: NotificationRepository
 
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
         super.onMessageReceived(remoteMessage)
 
-        // Process the notification in repository
-        CoroutineScope(Dispatchers.IO).launch {
-            notificationRepository.processRemoteMessage(remoteMessage)
-        }
+        // TODO: Process the notification in repository when injected
+        // notificationRepository.processRemoteMessage(remoteMessage)
 
         // Show system notification if app is in background
         if (shouldShowSystemNotification()) {
@@ -40,10 +35,8 @@ class LegalEaseMessagingService : FirebaseMessagingService() {
 
     override fun onNewToken(token: String) {
         super.onNewToken(token)
-        // Update token in repository
-        CoroutineScope(Dispatchers.IO).launch {
-            notificationRepository.updateFcmToken(token)
-        }
+        // TODO: Update token in repository when injected
+        // notificationRepository.updateFcmToken(token)
     }
 
     private fun shouldShowSystemNotification(): Boolean {
@@ -52,8 +45,8 @@ class LegalEaseMessagingService : FirebaseMessagingService() {
         return true // For simplicity, always show
     }
 
-    @Inject
-    lateinit var notificationChannelManager: NotificationChannelManager
+    // TODO: Initialize NotificationChannelManager properly
+    private val notificationChannelManager by lazy { NotificationChannelManager(this) }
 
     private fun showSystemNotification(remoteMessage: RemoteMessage) {
         val notificationType = remoteMessage.data["type"] ?: "GENERAL"

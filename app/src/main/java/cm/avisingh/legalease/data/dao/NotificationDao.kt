@@ -3,6 +3,7 @@ package cm.avisingh.legalease.data.dao
 import androidx.room.*
 import cm.avisingh.legalease.security.InAppNotification
 import kotlinx.coroutines.flow.Flow
+import java.util.Date
 
 @Dao
 interface NotificationDao {
@@ -25,5 +26,8 @@ interface NotificationDao {
     suspend fun delete(notification: InAppNotification)
 
     @Query("DELETE FROM in_app_notifications WHERE expiresAt < :now")
-    suspend fun deleteExpiredNotifications(now: java.util.Date)
+    suspend fun deleteExpiredNotifications(now: Date)
+    
+    @Query("SELECT COUNT(*) FROM in_app_notifications WHERE readAt IS NULL")
+    suspend fun getUnreadCount(): Int
 }

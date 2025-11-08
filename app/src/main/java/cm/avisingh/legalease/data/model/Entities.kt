@@ -117,3 +117,6 @@ data class CaseUpdate(
 enum class UpdateType {
     HEARING_UPDATE, DOCUMENT_FILED, STATUS_CHANGE, NOTE_ADDED
 }
+
+// Notification entity moved to cm.avisingh.legalease.security.InAppNotification
+// Use that class for all notification operations

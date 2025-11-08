@@ -2,14 +2,15 @@ package cm.avisingh.legalease.ui.notifications
 
 import android.graphics.Typeface
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import cm.avisingh.legalease.R
 import cm.avisingh.legalease.databinding.ItemNotificationBinding
-import cm.avisingh.legalease.notifications.InAppNotification
 import cm.avisingh.legalease.notifications.NotificationHelper
+import cm.avisingh.legalease.security.InAppNotification
 import java.text.SimpleDateFormat
 import java.util.Locale
 
@@ -58,38 +59,38 @@ class NotificationsAdapter(
             binding.apply {
                 // Set icon based on notification type
                 val iconResId = when (notification.type) {
-                    NotificationHelper.TYPE_DOCUMENT_SHARED -> R.drawable.ic_share
-                    NotificationHelper.TYPE_DOCUMENT_UPDATED -> R.drawable.ic_edit
-                    NotificationHelper.TYPE_COMMENT_ADDED -> R.drawable.ic_comment
-                    NotificationHelper.TYPE_ACCESS_GRANTED -> R.drawable.ic_lock_open
-                    NotificationHelper.TYPE_SYSTEM_UPDATE -> R.drawable.ic_system_update
+                    cm.avisingh.legalease.security.NotificationType.DOCUMENT_SHARED -> R.drawable.ic_share
+                    cm.avisingh.legalease.security.NotificationType.DOCUMENT_UPDATE -> R.drawable.ic_edit
+                    cm.avisingh.legalease.security.NotificationType.COMMENT -> R.drawable.ic_comment
+                    cm.avisingh.legalease.security.NotificationType.ACCESS_GRANTED -> R.drawable.ic_lock_open
+                    cm.avisingh.legalease.security.NotificationType.SYSTEM -> R.drawable.ic_system_update
                     else -> R.drawable.ic_notification
                 }
-                icon.setImageResource(iconResId)
+                notificationIcon.setImageResource(iconResId)
 
                 // Set title and message
-                title.text = notification.title
-                message.text = notification.message
-                timestamp.text = dateFormat.format(notification.timestamp)
+                notificationTitle.text = notification.title
+                notificationText.text = notification.message
+                notificationTime.text = dateFormat.format(notification.createdAt)
+
+                // Check if notification is read (readAt is not null)
+                val isRead = notification.readAt != null
 
                 // Apply unread styling
-                title.setTypeface(
-                    title.typeface,
-                    if (notification.isRead) Typeface.NORMAL else Typeface.BOLD
+                notificationTitle.setTypeface(
+                    notificationTitle.typeface,
+                    if (isRead) Typeface.NORMAL else Typeface.BOLD
                 )
-                message.setTypeface(
-                    message.typeface,
-                    if (notification.isRead) Typeface.NORMAL else Typeface.BOLD
+                notificationText.setTypeface(
+                    notificationText.typeface,
+                    if (isRead) Typeface.NORMAL else Typeface.BOLD
                 )
-                unreadIndicator.visibility = if (notification.isRead) {
-                    View.GONE
-                } else {
-                    View.VISIBLE
-                }
+                // TODO: Add unreadIndicator to layout or remove this code
+                // unreadIndicator.visibility = if (isRead) View.GONE else View.VISIBLE
 
                 // Set ripple effect color based on read status
                 root.setBackgroundResource(
-                    if (notification.isRead) {
+                    if (isRead) {
                         R.drawable.bg_notification_read
                     } else {
                         R.drawable.bg_notification_unread
@@ -97,7 +98,7 @@ class NotificationsAdapter(
                 )
 
                 // Animate new notifications
-                if (!notification.isRead) {
+                if (!isRead) {
                     root.alpha = 0f
                     root.translationX = -50f
                     root.animate()

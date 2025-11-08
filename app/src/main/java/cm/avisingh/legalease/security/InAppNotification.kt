@@ -17,7 +17,7 @@ data class InAppNotification(
     val priority: NotificationPriority = NotificationPriority.NORMAL,
     val type: NotificationType,
     val metadata: Map<String, String> = emptyMap(),
-    val encryptedPayload: ByteArray? = null,
+    val encryptedPayload: String? = null,
     val isEncrypted: Boolean = false
 ) {
     override fun equals(other: Any?): Boolean {
@@ -37,10 +37,7 @@ data class InAppNotification(
         if (priority != other.priority) return false
         if (type != other.type) return false
         if (metadata != other.metadata) return false
-        if (encryptedPayload != null) {
-            if (other.encryptedPayload == null) return false
-            if (!encryptedPayload.contentEquals(other.encryptedPayload)) return false
-        } else if (other.encryptedPayload != null) return false
+        if (encryptedPayload != other.encryptedPayload) return false
         if (isEncrypted != other.isEncrypted) return false
 
         return true
@@ -58,7 +55,7 @@ data class InAppNotification(
         result = 31 * result + priority.hashCode()
         result = 31 * result + type.hashCode()
         result = 31 * result + metadata.hashCode()
-        result = 31 * result + (encryptedPayload?.contentHashCode() ?: 0)
+        result = 31 * result + (encryptedPayload?.hashCode() ?: 0)
         result = 31 * result + isEncrypted.hashCode()
         return result
     }
@@ -72,6 +69,11 @@ enum class NotificationType {
     GENERAL,
     CASE_UPDATE,
     DOCUMENT_READY,
+    DOCUMENT_SHARED,
+    DOCUMENT_UPDATE,
+    COMMENT,
+    ACCESS_GRANTED,
+    SYSTEM,
     APPOINTMENT,
     DEADLINE,
     SECURITY

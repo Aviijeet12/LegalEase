@@ -31,7 +31,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun trackScreen() {
-        val analyticsHelper = (application as LegalEaseApplication).analyticsHelper
+        val analyticsHelper = LegalEaseApplication.analyticsHelper
         analyticsHelper.trackScreenView("LoginActivity")
     }
 
@@ -112,7 +112,7 @@ class LoginActivity : AppCompatActivity() {
         sharedPrefManager.setUserName(authService.getCurrentUser()?.displayName ?: getString(R.string.default_user_name))
         sharedPrefManager.setUserId(userId)
 
-        val analyticsHelper = (application as LegalEaseApplication).analyticsHelper
+        val analyticsHelper = LegalEaseApplication.analyticsHelper
         analyticsHelper.trackEvent("user_login", mapOf(
             "user_role" to role,
             "login_method" to "email"
@@ -130,7 +130,10 @@ class LoginActivity : AppCompatActivity() {
         binding.btnLogin.isEnabled = true
         Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show()
 
-        val analyticsHelper = (application as LegalEaseApplication).analyticsHelper
-        analyticsHelper.logError("Login Failed", errorMessage, "Authentication")
+        val analyticsHelper = LegalEaseApplication.analyticsHelper
+        analyticsHelper.logEvent("login_error", androidx.core.os.bundleOf(
+            "error_message" to errorMessage,
+            "error_category" to "Authentication"
+        ))
     }
 }

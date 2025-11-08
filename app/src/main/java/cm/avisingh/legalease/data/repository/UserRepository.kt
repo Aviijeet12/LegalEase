@@ -3,7 +3,7 @@ package cm.avisingh.legalease.data.repository
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
-import cm.avisingh.legalease.data.model.User
+import cm.avisingh.legalease.data.model.FirebaseUserModel
 import kotlinx.coroutines.tasks.await
 
 class UserRepository {
@@ -14,15 +14,15 @@ class UserRepository {
     val currentUser: FirebaseUser?
         get() = auth.currentUser
 
-    suspend fun createUser(user: User) {
+    suspend fun createUser(user: FirebaseUserModel) {
         usersCollection.document(user.id).set(user).await()
     }
 
-    suspend fun getUser(userId: String): User? {
-        return usersCollection.document(userId).get().await().toObject(User::class.java)
+    suspend fun getUser(userId: String): FirebaseUserModel? {
+        return usersCollection.document(userId).get().await().toObject(FirebaseUserModel::class.java)
     }
 
-    suspend fun updateUser(user: User) {
+    suspend fun updateUser(user: FirebaseUserModel) {
         usersCollection.document(user.id).set(user).await()
     }
 

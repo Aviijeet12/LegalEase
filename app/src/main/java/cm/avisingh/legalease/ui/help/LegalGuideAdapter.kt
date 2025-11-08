@@ -31,13 +31,14 @@ class LegalGuideAdapter(
 
         fun bind(guide: LegalGuide, onGuideClick: (LegalGuide) -> Unit) {
             binding.apply {
-                categoryText.text = guide.category
-                titleText.text = guide.title
-                descriptionText.text = guide.description
-                guideImage.setImageResource(guide.imageResId)
+                // TODO: Update layout item_legal_guide.xml with proper IDs
+                // categoryText.text = guide.category
+                // titleText.text = guide.title
+                // descriptionText.text = guide.description
+                // guideImage.setImageResource(guide.imageResId)
                 
                 root.setOnClickListener { onGuideClick(guide) }
-                readMoreButton.setOnClickListener { onGuideClick(guide) }
+                // readMoreButton.setOnClickListener { onGuideClick(guide) }
             }
         }
     }

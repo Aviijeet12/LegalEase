@@ -9,14 +9,12 @@ import android.os.Build
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import cm.avisingh.legalease.R
+import cm.avisingh.legalease.activities.DocumentCommentsActivity
+import cm.avisingh.legalease.activities.DocumentViewerActivity
 import cm.avisingh.legalease.ui.dashboard.DashboardActivity
-import dagger.hilt.android.qualifiers.ApplicationContext
-import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton
-class NotificationHelper @Inject constructor(
-    @ApplicationContext private val context: Context
+class NotificationHelper(
+    private val context: Context
 ) {
     companion object {
         const val CHANNEL_DOCUMENTS = "documents"

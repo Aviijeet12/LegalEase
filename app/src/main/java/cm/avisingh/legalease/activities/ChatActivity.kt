@@ -28,11 +28,13 @@ class ChatActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityChatBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        analyticsHelper.trackScreen(this::class.java.simpleName)
 
         analyticsHelper = LegalEaseApplication.analyticsHelper
         analyticsHelper.trackScreenView("Chat Screen")
-        analyticsHelper.logChatSessionStarted("convo_123", "client")
+        analyticsHelper.logChatSessionStarted(androidx.core.os.bundleOf(
+            "conversation_id" to "convo_123",
+            "user_role" to "client"
+        ))
         sharedPrefManager = SharedPrefManager(this)
         setupChat()
         setupClickListeners()
@@ -105,7 +107,10 @@ class ChatActivity : AppCompatActivity() {
         if (messageText.isEmpty()) {
             return
         }
-        analyticsHelper.logChatMessageSent("convo_123", messageText.length)
+        analyticsHelper.logChatMessageSent(androidx.core.os.bundleOf(
+            "conversation_id" to "convo_123",
+            "message_length" to messageText.length
+        ))
         // Create new message
         val currentUserEmail = sharedPrefManager.getUserEmail()
         val currentUserName = sharedPrefManager.getUserName()

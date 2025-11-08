@@ -22,17 +22,18 @@ class SyncWorker(
         try {
             val userId = userRepository.currentUser?.uid ?: return Result.failure()
 
-            // Get pending changes
-            val pendingDocuments = documentCache.observePendingChanges().first()
+            // Get pending changes (use CachedDocument to access syncStatus)
+            val pendingDocuments = documentCache.observePendingCachedDocuments().first()
 
             // Process each pending change
             pendingDocuments.forEach { document ->
                 when (document.syncStatus) {
                     SyncStatus.PENDING_UPLOAD -> {
                         // Upload new document
+                        // TODO: Convert localPath to Uri for upload
                         val uploadedDoc = documentRepository.uploadDocument(
                             userId = userId,
-                            fileUri = document.localUri,
+                            fileUri = android.net.Uri.parse(document.localPath ?: ""),
                             fileName = document.name,
                             category = document.category,
                             description = document.description
@@ -41,13 +42,16 @@ class SyncWorker(
                     }
                     SyncStatus.PENDING_UPDATE -> {
                         // Update existing document
-                        documentRepository.updateDocument(document)
-                        documentCache.updateDocument(document, SyncStatus.SYNCED)
+                        // TODO: Convert CachedDocument to FirebaseDocument properly
+                        val firebaseDoc = toFirebaseDocument(document)
+                        documentRepository.updateDocument(firebaseDoc)
+                        documentCache.updateDocument(firebaseDoc, SyncStatus.SYNCED)
                     }
                     SyncStatus.PENDING_DELETE -> {
                         // Delete document
-                        documentRepository.deleteDocument(document)
-                        documentCache.deleteDocument(document)
+                        val firebaseDoc = toFirebaseDocument(document)
+                        documentRepository.deleteDocument(firebaseDoc)
+                        documentCache.deleteDocument(firebaseDoc)
                     }
                     SyncStatus.CONFLICT -> {
                         // Handle conflict - for now, server wins
@@ -55,7 +59,8 @@ class SyncWorker(
                         if (serverDoc != null) {
                             documentCache.updateDocument(serverDoc, SyncStatus.SYNCED)
                         } else {
-                            documentCache.deleteDocument(document)
+                            val firebaseDoc = toFirebaseDocument(document)
+                            documentCache.deleteDocument(firebaseDoc)
                         }
                     }
                     else -> { /* Already synced */ }
@@ -107,5 +112,18 @@ class SyncWorker(
 
             WorkManager.getInstance(context).enqueue(syncRequest)
         }
+    }
+
+    private fun toFirebaseDocument(cached: cm.avisingh.legalease.data.cache.CachedDocument): cm.avisingh.legalease.data.model.FirebaseDocument {
+        return cm.avisingh.legalease.data.model.FirebaseDocument(
+            id = cached.id,
+            name = cached.name,
+            url = cached.url,
+            category = cached.category,
+            uploadedBy = cached.uploadedBy,
+            createdAt = com.google.firebase.Timestamp.now(),
+            description = cached.description ?: "",
+            tags = cached.tags.split(",").filter { it.isNotEmpty() }
+        )
     }
 }

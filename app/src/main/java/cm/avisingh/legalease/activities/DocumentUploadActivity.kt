@@ -192,7 +192,11 @@ class DocumentUploadActivity : AppCompatActivity() {
         ))
         binding.btnUpload.text = "Upload Document"
         binding.btnUpload.isEnabled = true
-        analyticsHelper.logDocumentUploaded("PDF", 2048L, "case_123")
+        analyticsHelper.logDocumentUploaded(androidx.core.os.bundleOf(
+            "file_type" to "PDF",
+            "file_size" to 2048L,
+            "case_id" to "case_123"
+        ))
         analyticsHelper.logFeatureUsed("Document Upload")
         // Show success dialog
         android.app.AlertDialog.Builder(this)

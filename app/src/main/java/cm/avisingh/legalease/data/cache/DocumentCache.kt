@@ -2,11 +2,12 @@ package cm.avisingh.legalease.data.cache
 
 import android.content.Context
 import androidx.room.*
-import cm.avisingh.legalease.data.model.Document
+import cm.avisingh.legalease.data.model.FirebaseDocument
 import com.google.firebase.Timestamp
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 import java.util.*
 
 @Entity(tableName = "documents")
@@ -106,23 +107,23 @@ class DocumentCache(context: Context) {
     private val dao = DocumentDatabase.getDatabase(context).documentDao()
     private val gson = Gson()
 
-    fun observeDocuments(userId: String): Flow<List<Document>> {
+    fun observeDocuments(userId: String): Flow<List<FirebaseDocument>> {
         return dao.getDocumentsByUser(userId).map { cachedDocs ->
-            cachedDocs.map { it.toDocument() }
+            cachedDocs.map { it.toFirebaseDocument() }
         }
     }
 
-    fun observeDocumentsByCategory(category: String): Flow<List<Document>> {
+    fun observeDocumentsByCategory(category: String): Flow<List<FirebaseDocument>> {
         return dao.getDocumentsByCategory(category).map { cachedDocs ->
-            cachedDocs.map { it.toDocument() }
+            cachedDocs.map { it.toFirebaseDocument() }
         }
     }
 
-    suspend fun cacheDocument(document: Document, localPath: String? = null) {
+    suspend fun cacheDocument(document: FirebaseDocument, localPath: String? = null) {
         dao.insertDocument(document.toCachedDocument(localPath))
     }
 
-    suspend fun updateDocument(document: Document, syncStatus: SyncStatus = SyncStatus.PENDING_UPDATE) {
+    suspend fun updateDocument(document: FirebaseDocument, syncStatus: SyncStatus = SyncStatus.PENDING_UPDATE) {
         val cached = dao.getDocument(document.id)
         if (cached != null) {
             dao.updateDocument(cached.copy(
@@ -138,18 +139,22 @@ class DocumentCache(context: Context) {
         }
     }
 
-    suspend fun deleteDocument(document: Document) {
+    suspend fun deleteDocument(document: FirebaseDocument) {
         dao.deleteDocumentById(document.id)
     }
 
-    fun observePendingChanges(): Flow<List<Document>> {
+    fun observePendingChanges(): Flow<List<FirebaseDocument>> {
         return dao.getPendingChanges().map { cachedDocs ->
-            cachedDocs.map { it.toDocument() }
+            cachedDocs.map { it.toFirebaseDocument() }
         }
     }
 
-    private fun CachedDocument.toDocument(): Document {
-        return Document(
+    fun observePendingCachedDocuments(): Flow<List<CachedDocument>> {
+        return dao.getPendingChanges()
+    }
+
+    private fun CachedDocument.toFirebaseDocument(): FirebaseDocument {
+        return FirebaseDocument(
             id = id,
             name = name,
             url = url,
@@ -168,7 +173,7 @@ class DocumentCache(context: Context) {
         )
     }
 
-    private fun Document.toCachedDocument(localPath: String? = null): CachedDocument {
+    private fun FirebaseDocument.toCachedDocument(localPath: String? = null): CachedDocument {
         return CachedDocument(
             id = id,
             name = name,

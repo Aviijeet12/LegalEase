@@ -33,9 +33,10 @@ class SharedUsersAdapter(
                 emailText.text = email
                 permissionsText.text = "Can view and download"
                 
+                // TODO: Fix avatarImage - should be TextView or ImageView
                 // Set first letter as avatar
-                val initial = email.firstOrNull()?.uppercaseChar() ?: 'U'
-                avatarImage.text = initial.toString()
+                // val initial = email.firstOrNull()?.uppercaseChar() ?: 'U'
+                // avatarImage.text = initial.toString()
 
                 removeButton.setOnClickListener {
                     onRemoveClick(email)

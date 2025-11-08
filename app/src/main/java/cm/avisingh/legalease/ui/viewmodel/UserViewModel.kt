@@ -4,15 +4,15 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import cm.avisingh.legalease.data.model.User
+import cm.avisingh.legalease.data.model.FirebaseUserModel
 import cm.avisingh.legalease.data.repository.UserRepository
 import kotlinx.coroutines.launch
 
 class UserViewModel : ViewModel() {
     private val repository = UserRepository()
 
-    private val _currentUser = MutableLiveData<User?>()
-    val currentUser: LiveData<User?> = _currentUser
+    private val _currentUser = MutableLiveData<FirebaseUserModel?>()
+    val currentUser: LiveData<FirebaseUserModel?> = _currentUser
 
     private val _loading = MutableLiveData<Boolean>()
     val loading: LiveData<Boolean> = _loading
@@ -42,7 +42,7 @@ class UserViewModel : ViewModel() {
         }
     }
 
-    fun createUser(user: User) {
+    fun createUser(user: FirebaseUserModel) {
         viewModelScope.launch {
             try {
                 _loading.value = true
@@ -57,7 +57,7 @@ class UserViewModel : ViewModel() {
         }
     }
 
-    fun updateUser(user: User) {
+    fun updateUser(user: FirebaseUserModel) {
         viewModelScope.launch {
             try {
                 _loading.value = true

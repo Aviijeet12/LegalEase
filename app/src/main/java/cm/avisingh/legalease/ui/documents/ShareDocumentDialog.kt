@@ -9,10 +9,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
+import cm.avisingh.legalease.R
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import cm.avisingh.legalease.data.model.Document
+import cm.avisingh.legalease.data.model.FirebaseDocument
 import cm.avisingh.legalease.data.sharing.DocumentSharingManager
 import cm.avisingh.legalease.databinding.DialogShareDocumentBinding
 import com.google.android.material.tabs.TabLayoutMediator
@@ -21,14 +22,17 @@ import kotlinx.coroutines.launch
 class ShareDocumentDialog : DialogFragment() {
     private var _binding: DialogShareDocumentBinding? = null
     private val binding get() = _binding!!
-    private lateinit var document: Document
+    private lateinit var document: cm.avisingh.legalease.data.model.FirebaseDocument
     private lateinit var sharingManager: DocumentSharingManager
     private lateinit var sharedUsersAdapter: SharedUsersAdapter
     
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setStyle(STYLE_NORMAL, R.style.ThemeOverlay_LegalEase_Dialog_FullScreen)
-        document = arguments?.getParcelable(ARG_DOCUMENT)!!
+        // TODO: Create ThemeOverlay_LegalEase_Dialog_FullScreen theme
+        setStyle(STYLE_NORMAL, 0)
+        // TODO: Load document from ID instead of Parcelable
+        val documentId = arguments?.getString(ARG_DOCUMENT) ?: ""
+        // document = ... load from repository
         sharingManager = DocumentSharingManager(requireContext())
     }
 
@@ -180,10 +184,11 @@ class ShareDocumentDialog : DialogFragment() {
     companion object {
         private const val ARG_DOCUMENT = "document"
 
-        fun newInstance(document: Document): ShareDocumentDialog {
+        fun newInstance(document: cm.avisingh.legalease.data.model.FirebaseDocument): ShareDocumentDialog {
             return ShareDocumentDialog().apply {
                 arguments = Bundle().apply {
-                    putParcelable(ARG_DOCUMENT, document)
+                    // TODO: Make FirebaseDocument Parcelable or pass just the ID
+                    putString(ARG_DOCUMENT, document.id)
                 }
             }
         }

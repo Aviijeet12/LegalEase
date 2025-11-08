@@ -5,18 +5,20 @@
     android:layout_height="match_parent"
     android:background="@color/black">
 
-    <!-- Remote Video View -->
-    <org.webrtc.SurfaceViewRenderer
+    <!-- Remote Video View - TODO: Replace with proper WebRTC library -->
+    <View
         android:id="@+id/remoteVideoView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:background="@color/black" />
 
-    <!-- Local Video View -->
-    <org.webrtc.SurfaceViewRenderer
+    <!-- Local Video View - TODO: Replace with proper WebRTC library -->
+    <View
         android:id="@+id/localVideoView"
         android:layout_width="120dp"
         android:layout_height="160dp"
         android:layout_margin="16dp"
+        android:background="@color/surface"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

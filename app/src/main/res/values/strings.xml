@@ -25,6 +25,7 @@
     <string name="onboarding_description_3">Your legal documents and case details are protected with enterprise-grade security</string>
     <string name="signup_coming_soon">Sign up feature coming soon!</string>
     <string name="password_reset_coming_soon">Password reset coming soon!</string>
+    <string name="create_case_coming_soon">Create case feature coming soon!</string>
     <string name="email_required">Email is required</string>
     <string name="valid_email_required">Enter a valid email address</string>
     <string name="password_required">Password is required</string>

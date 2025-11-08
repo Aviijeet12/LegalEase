@@ -6,14 +6,10 @@ import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthOptions
 import com.google.firebase.auth.PhoneAuthProvider
 import com.google.firebase.firestore.FirebaseFirestore
-import dagger.hilt.android.qualifiers.ApplicationContext
 import java.util.concurrent.TimeUnit
-import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton
-class TwoFactorAuthManager @Inject constructor(
-    @ApplicationContext private val context: Context,
+class TwoFactorAuthManager(
+    private val context: Context,
     private val auth: FirebaseAuth,
     private val firestore: FirebaseFirestore,
     private val securityManager: SecurityManager
@@ -44,7 +40,7 @@ class TwoFactorAuthManager @Inject constructor(
                     onVerificationCompleted(credential)
                 }
 
-                override fun onVerificationFailed(e: Exception) {
+                override fun onVerificationFailed(e: com.google.firebase.FirebaseException) {
                     securityManager.logSecurityEvent(
                         "2FA_VERIFICATION_FAILED",
                         "Phone verification failed: ${e.message}"

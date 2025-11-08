@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import cm.avisingh.legalease.R
+import cm.avisingh.legalease.activities.MainActivity
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 

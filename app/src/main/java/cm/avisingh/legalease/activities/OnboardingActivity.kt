@@ -79,7 +79,7 @@ class OnboardingActivity : AppCompatActivity() {
     }
 
     private fun navigateToLogin() {
-        val intent = Intent(this, LoginActivity::class.java)
+        val intent = Intent(this, cm.avisingh.legalease.ui.auth.LoginActivity::class.java)
         startActivity(intent)
         finish()
     }

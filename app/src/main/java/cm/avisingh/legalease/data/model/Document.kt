@@ -2,7 +2,8 @@ package cm.avisingh.legalease.data.model
 
 import com.google.firebase.Timestamp
 
-data class Document(
+// Firebase Document model - Room entity is in Entities.kt
+data class FirebaseDocument(
     val id: String = "",
     val name: String = "",
     val url: String = "",

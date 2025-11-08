@@ -4,21 +4,19 @@ import android.content.Context
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
-import cm.avisingh.legalease.data.model.Document
+import cm.avisingh.legalease.R
+import cm.avisingh.legalease.data.model.FirebaseDocument
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
-import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.tasks.await
-import javax.inject.Inject
-import javax.inject.Singleton
+import java.util.Date
 
 private val Context.dataStore by preferencesDataStore("search_prefs")
 private val SEARCH_HISTORY_KEY = stringPreferencesKey("search_history")
 
-@Singleton
-class SearchRepository @Inject constructor(
-    @ApplicationContext private val context: Context,
+class SearchRepository(
+    private val context: Context,
     private val firestore: FirebaseFirestore
 ) {
     suspend fun search(
@@ -63,7 +61,7 @@ class SearchRepository @Inject constructor(
 
         // Execute query
         val documents = documentsQuery.get().await().documents.mapNotNull { doc ->
-            doc.toObject(Document::class.java)?.let { document ->
+            doc.toObject(FirebaseDocument::class.java)?.let { document ->
                 // Post-filter for size range (Firestore doesn't support range queries on multiple fields)
                 if (sizeRange != null) {
                     val (minSize, maxSize) = sizeRange
@@ -72,16 +70,17 @@ class SearchRepository @Inject constructor(
                     }
                 }
 
+                val docType = getDocumentTypeFromMimeType(document.mimeType)
                 SearchResult(
                     id = document.id,
                     type = SearchResultType.DOCUMENT,
-                    title = document.title,
-                    description = document.description,
-                    category = document.category,
-                    date = document.createdAt,
+                    title = document.name,
+                    description = document.description ?: "",
+                    category = DocumentCategory.OTHER, // TODO: Map string category to enum
+                    date = document.createdAt.toDate(),
                     size = document.size,
-                    documentType = document.type,
-                    iconResId = getIconForDocumentType(document.type),
+                    documentType = docType,
+                    iconResId = getIconForDocumentType(docType),
                     matchText = "Matched in document content"
                 )
             }
@@ -109,6 +108,18 @@ class SearchRepository @Inject constructor(
     suspend fun clearSearchHistory() {
         context.dataStore.edit { preferences ->
             preferences.remove(SEARCH_HISTORY_KEY)
+        }
+    }
+
+    private fun getDocumentTypeFromMimeType(mimeType: String?): DocumentType {
+        return when {
+            mimeType == null -> DocumentType.OTHER
+            mimeType.contains("pdf", ignoreCase = true) -> DocumentType.PDF
+            mimeType.contains("word", ignoreCase = true) || mimeType.contains("msword", ignoreCase = true) -> DocumentType.WORD
+            mimeType.contains("excel", ignoreCase = true) || mimeType.contains("spreadsheet", ignoreCase = true) -> DocumentType.EXCEL
+            mimeType.startsWith("image/", ignoreCase = true) -> DocumentType.IMAGE
+            mimeType.contains("text", ignoreCase = true) -> DocumentType.TEXT
+            else -> DocumentType.OTHER
         }
     }
 

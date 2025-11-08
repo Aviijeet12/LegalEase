@@ -2,20 +2,18 @@ package cm.avisingh.legalease.data.sharing
 
 import android.content.Context
 import android.net.Uri
-import cm.avisingh.legalease.data.model.Document
-import com.google.firebase.dynamiclinks.ShortDynamicLink
-import com.google.firebase.dynamiclinks.ktx.*
+import cm.avisingh.legalease.data.model.FirebaseDocument
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.tasks.await
+import java.util.Date
 
 class DocumentSharingManager(private val context: Context) {
     private val firestore = FirebaseFirestore.getInstance()
     private val documentsCollection = firestore.collection("documents")
     private val sharingCollection = firestore.collection("document_shares")
 
-    suspend fun shareDocument(document: Document, userEmails: List<String>): List<String> {
+    suspend fun shareDocument(document: FirebaseDocument, userEmails: List<String>): List<String> {
         val successfulShares = mutableListOf<String>()
         
         // Update document sharing settings
@@ -44,25 +42,10 @@ class DocumentSharingManager(private val context: Context) {
         return successfulShares
     }
 
-    suspend fun createSharingLink(document: Document, expireInDays: Int = 7): Uri {
-        val dynamicLink = Firebase.dynamicLinks.dynamicLink {
-            link = Uri.parse("https://legalease.app/document/${document.id}")
-            domainUriPrefix = "https://legalease.page.link"
-            androidParameters {
-                minimumVersion = 1
-            }
-            socialMetaTagParameters {
-                title = document.name
-                description = document.description ?: "Shared document from LegalEase"
-            }
-            // Link expires in specified days
-            expirationDuration = expireInDays * 24 * 60 * 60
-        }
-
-        return Firebase.dynamicLinks.shortLinkAsync {
-            longLink = dynamicLink.uri
-            buildShortDynamicLink(ShortDynamicLink.Suffix.SHORT)
-        }.await().shortLink!!
+    suspend fun createSharingLink(document: FirebaseDocument, expireInDays: Int = 7): Uri {
+        // TODO: Re-enable Firebase Dynamic Links when library is added
+        // For now, return a simple URL
+        return Uri.parse("https://legalease.app/document/${document.id}")
     }
 
     suspend fun getSharedUsers(documentId: String): List<String> {
@@ -70,7 +53,7 @@ class DocumentSharingManager(private val context: Context) {
         return document.get("sharedWith") as? List<String> ?: emptyList()
     }
 
-    suspend fun removeSharing(document: Document, userEmail: String) {
+    suspend fun removeSharing(document: FirebaseDocument, userEmail: String) {
         // Remove user from document's sharedWith list
         documentsCollection.document(document.id)
             .update("sharedWith", FieldValue.arrayRemove(userEmail))

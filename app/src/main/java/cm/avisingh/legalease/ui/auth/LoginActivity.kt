@@ -2,11 +2,9 @@ package cm.avisingh.legalease.ui.auth
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doAfterTextChanged
-import cm.avisingh.legalease.MainActivity
 import cm.avisingh.legalease.databinding.ActivityLoginBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.auth.FirebaseAuth
@@ -34,28 +32,24 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun setupInputValidation() {
-        binding.apply {
-            // Clear errors on text change
-            emailEditText.doAfterTextChanged {
-                emailInputLayout.error = null
-            }
-            passwordEditText.doAfterTextChanged {
-                passwordInputLayout.error = null
-            }
+        // View binding with actual IDs from XML
+        binding.etEmail.doAfterTextChanged {
+            // Clear any previous errors
+        }
+        binding.etPassword.doAfterTextChanged {
+            // Clear any previous errors
         }
     }
 
     private fun setupClickListeners() {
-        binding.apply {
-            loginButton.setOnClickListener { attemptLogin() }
-            registerButton.setOnClickListener { openRegister() }
-            forgotPasswordButton.setOnClickListener { showForgotPasswordDialog() }
-        }
+        binding.btnLogin.setOnClickListener { attemptLogin() }
+        binding.tvSignUp.setOnClickListener { openRegister() }
+        binding.tvForgotPassword.setOnClickListener { showForgotPasswordDialog() }
     }
 
     private fun attemptLogin() {
-        val email = binding.emailEditText.text.toString()
-        val password = binding.passwordEditText.text.toString()
+        val email = binding.etEmail.text.toString()
+        val password = binding.etPassword.text.toString()
 
         // Validate input
         if (!validateInput(email, password)) return
@@ -83,23 +77,23 @@ class LoginActivity : AppCompatActivity() {
 
     private fun validateInput(email: String, password: String): Boolean {
         var isValid = true
-        binding.apply {
-            if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-                emailInputLayout.error = "Enter a valid email address"
-                isValid = false
-            }
-            if (password.isEmpty() || password.length < 6) {
-                passwordInputLayout.error = "Password must be at least 6 characters"
-                isValid = false
-            }
+        
+        if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            Toast.makeText(this, "Enter a valid email address", Toast.LENGTH_SHORT).show()
+            isValid = false
         }
+        if (password.isEmpty() || password.length < 6) {
+            Toast.makeText(this, "Password must be at least 6 characters", Toast.LENGTH_SHORT).show()
+            isValid = false
+        }
+        
         return isValid
     }
 
     private fun showForgotPasswordDialog() {
-        val email = binding.emailEditText.text.toString()
+        val email = binding.etEmail.text.toString()
         if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            binding.emailInputLayout.error = "Enter a valid email address first"
+            Toast.makeText(this, "Enter a valid email address first", Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -139,18 +133,16 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun startMainActivity() {
-        startActivity(Intent(this, MainActivity::class.java))
+        startActivity(Intent(this, cm.avisingh.legalease.activities.MainActivity::class.java))
         finish()
     }
 
     private fun setLoading(loading: Boolean) {
-        binding.apply {
-            progressIndicator.visibility = if (loading) View.VISIBLE else View.GONE
-            loginButton.isEnabled = !loading
-            registerButton.isEnabled = !loading
-            forgotPasswordButton.isEnabled = !loading
-            emailInputLayout.isEnabled = !loading
-            passwordInputLayout.isEnabled = !loading
-        }
+        // TODO: Add progress indicator to layout
+        binding.btnLogin.isEnabled = !loading
+        binding.tvSignUp.isEnabled = !loading
+        binding.tvForgotPassword.isEnabled = !loading
+        binding.etEmail.isEnabled = !loading
+        binding.etPassword.isEnabled = !loading
     }
 }

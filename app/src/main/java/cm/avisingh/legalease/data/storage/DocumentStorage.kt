@@ -10,7 +10,7 @@ import java.io.File
 
 class DocumentStorage {
     private val storage = FirebaseStorage.getInstance()
-    private val documentsRef = storage.reference.child("documents")
+    val documentsRef = storage.reference.child("documents")
 
     suspend fun uploadDocument(
         userId: String,

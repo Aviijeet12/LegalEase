@@ -1,5 +1,6 @@
 package cm.avisingh.legalease.models
 
+import cm.avisingh.legalease.R
 import java.text.SimpleDateFormat
 import java.util.*
 

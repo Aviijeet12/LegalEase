@@ -25,7 +25,8 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <com.github.barteksc.pdfviewer.PDFView
+        <!-- TODO: Replace with proper PDF viewer library -->
+        <WebView
             android:id="@+id/pdfView"
             android:layout_width="match_parent"
             android:layout_height="0dp"

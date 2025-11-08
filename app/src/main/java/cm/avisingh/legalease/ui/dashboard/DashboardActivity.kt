@@ -9,8 +9,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import cm.avisingh.legalease.R
-import cm.avisingh.legalease.data.model.Document
+import cm.avisingh.legalease.data.model.FirebaseDocument
 import cm.avisingh.legalease.databinding.ActivityDashboardBinding
+import cm.avisingh.legalease.security.InAppNotification
 import cm.avisingh.legalease.ui.documents.DocumentsActivity
 import cm.avisingh.legalease.ui.profile.ProfileActivity
 import cm.avisingh.legalease.ui.search.SearchActivity
@@ -112,9 +113,8 @@ class DashboardActivity : AppCompatActivity() {
     }
 
     private fun startDocumentUpload() {
-        val intent = Intent(this, DocumentsActivity::class.java).apply {
-            action = DocumentsActivity.ACTION_UPLOAD
-        }
+        val intent = Intent(this, DocumentsActivity::class.java)
+        // TODO: Add ACTION_UPLOAD constant to DocumentsActivity
         startActivity(intent)
     }
 
@@ -126,29 +126,26 @@ class DashboardActivity : AppCompatActivity() {
         startActivity(Intent(this, SearchActivity::class.java))
     }
 
-    private fun openDocument(document: Document) {
-        val intent = Intent(this, DocumentViewerActivity::class.java).apply {
-            putExtra(DocumentViewerActivity.EXTRA_DOCUMENT, document)
-        }
-        startActivity(intent)
+    private fun openDocument(document: FirebaseDocument) {
+        // TODO: Create DocumentViewerActivity
+        android.widget.Toast.makeText(this, "Opening document: ${document.name}", android.widget.Toast.LENGTH_SHORT).show()
     }
 
     private fun openStorageSettings() {
         startActivity(Intent(this, SettingsActivity::class.java).apply {
-            putExtra(SettingsActivity.EXTRA_SCROLL_TO, "storage_settings")
+            // TODO: Add EXTRA_SCROLL_TO constant to SettingsActivity
+            putExtra("scroll_to", "storage_settings")
         })
     }
 
-    private fun handleNotification(notification: Notification) {
-        when (notification.type) {
-            NotificationType.SHARE -> openDocument(notification.document)
-            NotificationType.COMMENT -> openDocumentComments(notification.document)
-            NotificationType.SYSTEM -> handleSystemNotification(notification)
-        }
+    private fun handleNotification(notification: InAppNotification) {
+        // TODO: Handle notification based on type
+        android.widget.Toast.makeText(this, "Notification: ${notification.title}", android.widget.Toast.LENGTH_SHORT).show()
     }
 
-    private fun showNotificationOptions(notification: Notification) {
+    private fun showNotificationOptions(notification: InAppNotification) {
         // Show notification options menu
+        // TODO: Implement notification options dialog
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

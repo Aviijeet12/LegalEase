@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import cm.avisingh.legalease.databinding.BottomSheetNotificationOptionsBinding
-import cm.avisingh.legalease.notifications.InAppNotification
+import cm.avisingh.legalease.security.InAppNotification
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import androidx.fragment.app.FragmentManager
 
@@ -28,16 +28,17 @@ class NotificationOptionsBottomSheet : BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val notification = arguments?.getParcelable<InAppNotification>(ARG_NOTIFICATION)
-            ?: return dismiss()
+        // TODO: Load notification from repository using ID instead of Parcelable
+        val notificationId = arguments?.getString(ARG_NOTIFICATION) ?: return dismiss()
+        val isRead = arguments?.getBoolean(ARG_IS_READ, false) ?: false
 
-        setupUI(notification)
+        setupUI(isRead)
     }
 
-    private fun setupUI(notification: InAppNotification) {
+    private fun setupUI(isRead: Boolean) {
         binding.apply {
             // Show/hide mark as read option based on notification status
-            markAsReadButton.visibility = if (notification.isRead) {
+            markAsReadButton.visibility = if (isRead) {
                 View.GONE
             } else {
                 View.VISIBLE
@@ -63,6 +64,7 @@ class NotificationOptionsBottomSheet : BottomSheetDialogFragment() {
     companion object {
         private const val TAG = "NotificationOptionsBottomSheet"
         private const val ARG_NOTIFICATION = "notification"
+        private const val ARG_IS_READ = "is_read"
 
         fun show(
             fragmentManager: FragmentManager,
@@ -72,7 +74,8 @@ class NotificationOptionsBottomSheet : BottomSheetDialogFragment() {
         ) {
             val fragment = NotificationOptionsBottomSheet().apply {
                 arguments = Bundle().apply {
-                    putParcelable(ARG_NOTIFICATION, notification)
+                    putString(ARG_NOTIFICATION, notification.id)
+                    putBoolean(ARG_IS_READ, notification.readAt != null)
                 }
                 this.onMarkAsRead = onMarkAsRead
                 this.onDelete = onDelete

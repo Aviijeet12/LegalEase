@@ -139,8 +139,7 @@ class MainActivity : AppCompatActivity() {
         binding.cardAddCase.setOnClickListener {
             analyticsHelper.trackEvent("feature_click", mapOf("feature" to "add_case"))
             analyticsHelper.logFeatureUsed("Add Case Button")
-            Toast.makeText(this, "Add New Case - Coming Soon!", Toast.LENGTH_SHORT).show()\
-
+            Toast.makeText(this, "Add New Case - Coming Soon!", Toast.LENGTH_SHORT).show()
         }
 
         // Test crash reporting (remove later)
@@ -197,6 +196,11 @@ class MainActivity : AppCompatActivity() {
                 }
             }
             .show()
+    }
+
+    private fun updateCasesUI(cases: List<Any>) {
+        // TODO: Update RecyclerView with actual cases data
+        // For now, just log or show toast
     }
 
     private fun logout() {

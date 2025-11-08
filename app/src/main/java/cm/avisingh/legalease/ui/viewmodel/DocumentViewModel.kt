@@ -6,7 +6,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import cm.avisingh.legalease.data.model.Document
+import cm.avisingh.legalease.data.model.FirebaseDocument
 import cm.avisingh.legalease.data.repository.DocumentRepository
 import cm.avisingh.legalease.data.repository.UserRepository
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -18,8 +18,8 @@ class DocumentViewModel(application: Application) : AndroidViewModel(application
     private val documentRepository = DocumentRepository(application)
     private val userRepository = UserRepository()
 
-    private val _documents = MutableStateFlow<List<Document>>(emptyList())
-    val documents: StateFlow<List<Document>> = _documents
+    private val _documents = MutableStateFlow<List<FirebaseDocument>>(emptyList())
+    val documents: StateFlow<List<FirebaseDocument>> = _documents
 
     private val _loading = MutableLiveData<Boolean>()
     val loading: LiveData<Boolean> = _loading
@@ -80,7 +80,7 @@ class DocumentViewModel(application: Application) : AndroidViewModel(application
         }
     }
 
-    fun downloadDocument(document: Document): LiveData<File?> {
+    fun downloadDocument(document: FirebaseDocument): LiveData<File?> {
         val result = MutableLiveData<File?>()
         viewModelScope.launch {
             try {
@@ -98,7 +98,7 @@ class DocumentViewModel(application: Application) : AndroidViewModel(application
         return result
     }
 
-    fun deleteDocument(document: Document) {
+    fun updateDocument(document: FirebaseDocument) {
         viewModelScope.launch {
             try {
                 _loading.value = true
@@ -117,7 +117,7 @@ class DocumentViewModel(application: Application) : AndroidViewModel(application
         }
     }
 
-    fun moveDocument(document: Document, newCategory: String) {
+    fun moveDocument(document: FirebaseDocument, newCategory: String) {
         viewModelScope.launch {
             try {
                 _loading.value = true

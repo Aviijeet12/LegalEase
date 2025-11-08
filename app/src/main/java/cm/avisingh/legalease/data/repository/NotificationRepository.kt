@@ -18,18 +18,15 @@ import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
 import java.util.Date
 import java.util.UUID
-import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton
-class NotificationRepository @Inject constructor(
+class NotificationRepository(
     private val notificationDao: NotificationDao,
     private val encryptionManager: EncryptionManager,
     private val securityManager: SecurityManager,
     private val notificationPreferences: NotificationPreferences,
     private val firestore: FirebaseFirestore,
     private val auth: FirebaseAuth,
-    @ApplicationContext private val context: Context
+    private val context: Context
 ) {
     fun getAllNotifications(): Flow<List<InAppNotification>> {
         return notificationDao.getAllNotifications().map { notifications ->
@@ -160,7 +157,7 @@ class NotificationRepository @Inject constructor(
             "metadata" to notification.metadata.toString()
         )
 
-        val encryptedData = encryptionManager.encrypt(sensitiveData.toString().toByteArray())
+        val encryptedData = encryptionManager.encrypt(sensitiveData.toString())
         
         return notification.copy(
             title = "[Encrypted]",
@@ -173,7 +170,7 @@ class NotificationRepository @Inject constructor(
 
     private fun decryptNotification(notification: InAppNotification): InAppNotification {
         val decryptedData = notification.encryptedPayload?.let {
-            String(encryptionManager.decrypt(it))
+            encryptionManager.decrypt(it)
         } ?: return notification
 
         // In a real app, implement proper parsing of the decrypted data

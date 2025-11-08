@@ -27,6 +27,21 @@ class AuthService {
         }
     }
 
+    suspend fun registerUser(email: String, password: String, fullName: String, role: String): Result {
+        return try {
+            val authResult = firebaseAuth.createUserWithEmailAndPassword(email, password).await()
+            val user = authResult.user
+            if (user != null) {
+                // TODO: Store fullName and role in Firestore user profile
+                Result.Success(user)
+            } else {
+                Result.Failure("Registration failed - no user returned")
+            }
+        } catch (e: Exception) {
+            Result.Failure(e.message ?: "Registration failed")
+        }
+    }
+
     fun getCurrentUser(): FirebaseUser? {
         return firebaseAuth.currentUser
     }

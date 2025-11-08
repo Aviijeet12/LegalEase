@@ -7,6 +7,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.inputmethod.EditorInfo
+import android.widget.ArrayAdapter
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
@@ -139,7 +140,8 @@ class SearchActivity : AppCompatActivity() {
                     android.R.layout.simple_dropdown_item_1line,
                     history
                 )
-                binding.searchEditText.setAdapter(adapter)
+                // TODO: searchEditText needs to be AutoCompleteTextView to use setAdapter
+                // binding.searchEditText.setAdapter(adapter)
             }
         }
     }

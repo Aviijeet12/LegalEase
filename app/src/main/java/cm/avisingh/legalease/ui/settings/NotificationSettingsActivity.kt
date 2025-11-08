@@ -1,37 +1,32 @@
 package cm.avisingh.legalease.ui.settings
 
 import android.os.Bundle
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import cm.avisingh.legalease.databinding.ActivityNotificationSettingsBinding
+import cm.avisingh.legalease.R
 import cm.avisingh.legalease.notifications.NotificationPreferences
-import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
-@AndroidEntryPoint
 class NotificationSettingsActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityNotificationSettingsBinding
-    private val viewModel: NotificationSettingsViewModel by viewModels()
+    private lateinit var viewModel: NotificationSettingsViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityNotificationSettingsBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
-        setupToolbar()
-        setupPreferencesUI()
+        setContentView(R.layout.activity_notification_settings)
+        
+        viewModel = ViewModelProvider(this)[NotificationSettingsViewModel::class.java]
+        
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.title = "Notification Settings"
+        
+        // TODO: Implement UI when layout is complete
         observePreferences()
     }
 
-    private fun setupToolbar() {
-        setSupportActionBar(binding.toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.title = "Notification Settings"
-    }
-
     private fun setupPreferencesUI() {
-        binding.apply {
+        // TODO: Setup switches when layout is complete
+        /*binding.apply {
             // Listen to switch changes
             pushNotificationsSwitch.setOnCheckedChangeListener { _, isChecked ->
                 updatePreferences { it.copy(pushEnabled = isChecked) }
@@ -57,7 +52,7 @@ class NotificationSettingsActivity : AppCompatActivity() {
             systemUpdatesSwitch.setOnCheckedChangeListener { _, isChecked ->
                 updatePreferences { it.copy(systemUpdates = isChecked) }
             }
-        }
+        }*/
     }
 
     private fun observePreferences() {
@@ -69,25 +64,11 @@ class NotificationSettingsActivity : AppCompatActivity() {
     }
 
     private fun updateSwitchesFromPreferences(preferences: NotificationPreferences) {
-        binding.apply {
-            pushNotificationsSwitch.isChecked = preferences.pushEnabled
-            emailNotificationsSwitch.isChecked = preferences.emailEnabled
-            documentSharingSwitch.isChecked = preferences.documentSharing
-            documentUpdatesSwitch.isChecked = preferences.documentUpdates
-            commentsSwitch.isChecked = preferences.comments
-            systemUpdatesSwitch.isChecked = preferences.systemUpdates
-
-            updateSwitchesState(preferences.pushEnabled)
-        }
+        // TODO: Update UI when layout is complete
     }
 
     private fun updateSwitchesState(enabled: Boolean) {
-        binding.apply {
-            documentSharingSwitch.isEnabled = enabled
-            documentUpdatesSwitch.isEnabled = enabled
-            commentsSwitch.isEnabled = enabled
-            systemUpdatesSwitch.isEnabled = enabled
-        }
+        // TODO: Update switches state when layout is complete
     }
 
     private fun updatePreferences(update: (NotificationPreferences) -> NotificationPreferences) {

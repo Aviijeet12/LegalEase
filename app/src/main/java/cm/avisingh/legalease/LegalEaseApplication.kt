@@ -2,36 +2,38 @@ package cm.avisingh.legalease
 
 import android.app.Application
 import androidx.core.os.bundleOf
-import androidx.hilt.work.HiltWorkerFactory
+// import androidx.hilt.work.HiltWorkerFactory
 import androidx.work.Configuration
 import cm.avisingh.legalease.notifications.NotificationChannelManager
 import cm.avisingh.legalease.utils.AnalyticsHelper
 import cm.avisingh.legalease.utils.SharedPrefManager
-import dagger.hilt.android.HiltAndroidApp
-import javax.inject.Inject
+// import dagger.hilt.android.HiltAndroidApp
+// import javax.inject.Inject
 
-@HiltAndroidApp
+// @HiltAndroidApp - Temporarily disabled Hilt to fix build
 class LegalEaseApplication : Application(), Configuration.Provider {
     
-    @Inject
-    lateinit var workerFactory: HiltWorkerFactory
+    // @Inject
+    // lateinit var workerFactory: HiltWorkerFactory
 
     companion object {
         lateinit var analyticsHelper: AnalyticsHelper
     }
 
-    @Inject
-    lateinit var notificationChannelManager: NotificationChannelManager
+    private lateinit var notificationChannelManager: NotificationChannelManager
 
     override fun onCreate() {
         super.onCreate()
 
+        // Initialize notification channel manager manually (Hilt disabled)
+        notificationChannelManager = NotificationChannelManager(this)
+
         // Initialize analytics helper
         val sharedPrefManager = SharedPrefManager(this)
-        analyticsHelper = AnalyticsHelper(sharedPrefManager)
+        analyticsHelper = AnalyticsHelper(this)
 
         // Set user properties
-        analyticsHelper.setUserProperties()
+        analyticsHelper.setUserProperty("user_role", sharedPrefManager.getUserRole() ?: "unknown")
 
         // Log app start
         analyticsHelper.logEvent("app_launched", bundleOf(
@@ -40,8 +42,8 @@ class LegalEaseApplication : Application(), Configuration.Provider {
         ))
     }
 
-    override fun getWorkManagerConfiguration(): Configuration =
-        Configuration.Builder()
-            .setWorkerFactory(workerFactory)
+    override val workManagerConfiguration: Configuration
+        get() = Configuration.Builder()
+            // .setWorkerFactory(workerFactory) // Hilt worker factory disabled
             .build()
 }

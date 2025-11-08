@@ -8,13 +8,14 @@ class SharedPrefManager(context: Context) {
     private val sharedPreferences: SharedPreferences =
         context.getSharedPreferences("LegalEasePrefs", Context.MODE_PRIVATE)
 
-    // Move constants outside companion object to make them accessible
-    private val KEY_FIRST_LAUNCH = "first_launch"
-    private val KEY_IS_LOGGED_IN = "is_logged_in"
-    private val KEY_USER_ROLE = "user_role"
-    private val KEY_USER_EMAIL = "user_email"
-    private val KEY_USER_NAME = "user_name"
-    private const val KEY_USER_ID = "user_id"
+    companion object {
+        private const val KEY_FIRST_LAUNCH = "first_launch"
+        private const val KEY_IS_LOGGED_IN = "is_logged_in"
+        private const val KEY_USER_ROLE = "user_role"
+        private const val KEY_USER_EMAIL = "user_email"
+        private const val KEY_USER_NAME = "user_name"
+        private const val KEY_USER_ID = "user_id"
+    }
 
 
     fun setUserId(userId: String) {

@@ -2,99 +2,71 @@ package cm.avisingh.legalease.ui.pdf
 
 import android.app.Activity
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
-import android.view.View
+import android.webkit.WebView
+import android.webkit.WebViewClient
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.FileProvider
-import cm.avisingh.legalease.databinding.ActivityPdfViewerBinding
-import com.github.barteksc.pdfviewer.listener.OnLoadCompleteListener
-import com.github.barteksc.pdfviewer.listener.OnPageChangeListener
-import com.github.barteksc.pdfviewer.scroll.DefaultScrollHandle
+import cm.avisingh.legalease.R
 import java.io.File
 
-class PdfViewerActivity : AppCompatActivity(), OnPageChangeListener, OnLoadCompleteListener {
-    private lateinit var binding: ActivityPdfViewerBinding
-    private var totalPages = 0
-
+/**
+ * PDF Viewer Activity - Uses WebView for PDF display
+ * TODO: Add proper PDF library (e.g., com.github.barteksc:android-pdf-viewer) for better experience
+ */
+class PdfViewerActivity : AppCompatActivity() {
+    private lateinit var webView: WebView
+    
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityPdfViewerBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
+        setContentView(R.layout.activity_main) // TODO: Create proper layout with WebView
+        
         setupToolbar()
-        setupPdfView()
-        setupControls()
+        setupWebView()
+        loadPdf()
     }
 
     private fun setupToolbar() {
-        setSupportActionBar(binding.toolbar)
-        supportActionBar?.setDisplayShowTitleEnabled(true)
-        binding.toolbar.setNavigationOnClickListener { onBackPressed() }
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         
         intent.getStringExtra(EXTRA_TITLE)?.let {
-            binding.toolbar.title = it
+            title = it
         }
     }
 
-    private fun setupPdfView() {
-        binding.progressIndicator.visibility = View.VISIBLE
+    private fun setupWebView() {
+        // TODO: Initialize webView from layout
+        // webView = findViewById(R.id.webView)
+        // webView.settings.apply {
+        //     javaScriptEnabled = true
+        //     builtInZoomControls = true
+        //     displayZoomControls = false
+        // }
+        // webView.webViewClient = WebViewClient()
+    }
 
+    private fun loadPdf() {
         intent.getStringExtra(EXTRA_FILE_PATH)?.let { filePath ->
-            val file = File(filePath)
-            val uri = FileProvider.getUriForFile(
-                this,
-                "${packageName}.provider",
-                file
-            )
-
-            binding.pdfView.apply {
-                fromUri(uri)
-                    .defaultPage(0)
-                    .enableSwipe(true)
-                    .swipeHorizontal(false)
-                    .enableDoubletap(true)
-                    .enableAnnotationRendering(true)
-                    .scrollHandle(DefaultScrollHandle(this@PdfViewerActivity))
-                    .spacing(10)
-                    .onPageChange(this@PdfViewerActivity)
-                    .onLoad(this@PdfViewerActivity)
-                    .load()
+            try {
+                // TODO: Implement PDF loading
+                // Option 1: Use WebView with Google Docs Viewer
+                // val url = "https://docs.google.com/gview?embedded=true&url=$encodedUrl"
+                // webView.loadUrl(url)
+                
+                // Option 2: Use file:// protocol (may not work on all devices)
+                // webView.loadUrl("file://$filePath")
+                
+                Toast.makeText(this, "PDF viewing not yet implemented", Toast.LENGTH_LONG).show()
+            } catch (e: Exception) {
+                Toast.makeText(this, "Error loading PDF: ${e.message}", Toast.LENGTH_LONG).show()
             }
         }
     }
-
-    private fun setupControls() {
-        // Previous page button
-        binding.previousButton.setOnClickListener {
-            if (binding.pdfView.currentPage > 0) {
-                binding.pdfView.jumpTo(binding.pdfView.currentPage - 1)
-            }
-        }
-
-        // Next page button
-        binding.nextButton.setOnClickListener {
-            if (binding.pdfView.currentPage < totalPages - 1) {
-                binding.pdfView.jumpTo(binding.pdfView.currentPage + 1)
-            }
-        }
-
-        updatePageControls(0)
-    }
-
-    private fun updatePageControls(pageNumber: Int) {
-        binding.previousButton.isEnabled = pageNumber > 0
-        binding.nextButton.isEnabled = pageNumber < totalPages - 1
-        binding.pageNumberText.text = "Page ${pageNumber + 1} of $totalPages"
-    }
-
-    override fun onPageChanged(page: Int, pageCount: Int) {
-        updatePageControls(page)
-    }
-
-    override fun loadComplete(nbPages: Int) {
-        totalPages = nbPages
-        binding.progressIndicator.visibility = View.GONE
-        updatePageControls(binding.pdfView.currentPage)
+    
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 
     companion object {

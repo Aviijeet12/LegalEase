@@ -5,15 +5,17 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import cm.avisingh.legalease.data.model.Notification
+import cm.avisingh.legalease.R
+import cm.avisingh.legalease.notifications.NotificationHelper
+import cm.avisingh.legalease.security.InAppNotification
 import cm.avisingh.legalease.databinding.ItemNotificationBinding
 import java.text.SimpleDateFormat
 import java.util.*
 
 class NotificationsAdapter(
-    private val onNotificationClick: (Notification) -> Unit,
-    private val onMoreClick: (Notification) -> Unit
-) : ListAdapter<Notification, NotificationsAdapter.ViewHolder>(DIFF_CALLBACK) {
+    private val onNotificationClick: (InAppNotification) -> Unit,
+    private val onMoreClick: (InAppNotification) -> Unit
+) : ListAdapter<InAppNotification, NotificationsAdapter.ViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ItemNotificationBinding.inflate(
@@ -32,11 +34,11 @@ class NotificationsAdapter(
         private val binding: ItemNotificationBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(notification: Notification) {
+        fun bind(notification: InAppNotification) {
             binding.apply {
                 notificationTitle.text = notification.title
                 notificationText.text = notification.message
-                notificationTime.text = formatTime(notification.timestamp.toDate())
+                notificationTime.text = formatTime(notification.createdAt)
                 notificationIcon.setImageResource(getNotificationIcon(notification.type))
 
                 root.setOnClickListener { onNotificationClick(notification) }
@@ -62,23 +64,24 @@ class NotificationsAdapter(
             }
         }
 
-        private fun getNotificationIcon(type: NotificationType): Int {
+        private fun getNotificationIcon(type: cm.avisingh.legalease.security.NotificationType): Int {
             return when (type) {
-                NotificationType.SHARE -> R.drawable.ic_share
-                NotificationType.COMMENT -> R.drawable.ic_comment
-                NotificationType.MENTION -> R.drawable.ic_mention
-                NotificationType.UPDATE -> R.drawable.ic_update
-                NotificationType.SYSTEM -> R.drawable.ic_info
+                cm.avisingh.legalease.security.NotificationType.DOCUMENT_SHARED -> R.drawable.ic_share
+                cm.avisingh.legalease.security.NotificationType.COMMENT -> R.drawable.ic_comment
+                cm.avisingh.legalease.security.NotificationType.ACCESS_GRANTED -> R.drawable.ic_lock_open
+                cm.avisingh.legalease.security.NotificationType.DOCUMENT_UPDATE -> R.drawable.ic_edit
+                cm.avisingh.legalease.security.NotificationType.SYSTEM -> R.drawable.ic_system_update
+                else -> R.drawable.ic_notification
             }
         }
     }
 
     companion object {
-        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Notification>() {
-            override fun areItemsTheSame(oldItem: Notification, newItem: Notification) =
+        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<InAppNotification>() {
+            override fun areItemsTheSame(oldItem: InAppNotification, newItem: InAppNotification) =
                 oldItem.id == newItem.id
 
-            override fun areContentsTheSame(oldItem: Notification, newItem: Notification) =
+            override fun areContentsTheSame(oldItem: InAppNotification, newItem: InAppNotification) =
                 oldItem == newItem
         }
     }

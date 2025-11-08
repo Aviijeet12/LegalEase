@@ -45,7 +45,9 @@ class FAQDetailBottomSheet : BottomSheetDialogFragment() {
     private fun setupRecyclerView() {
         binding.relatedQuestionsRecyclerView.apply {
             layoutManager = LinearLayoutManager(context)
-            relatedQuestionsAdapter = FAQAdapter()
+            relatedQuestionsAdapter = FAQAdapter { faq ->
+                // Handle FAQ click - TODO: Implement
+            }
             adapter = relatedQuestionsAdapter
         }
     }

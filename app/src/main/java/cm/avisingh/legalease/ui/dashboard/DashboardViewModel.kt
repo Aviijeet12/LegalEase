@@ -3,8 +3,8 @@ package cm.avisingh.legalease.ui.dashboard
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
-import cm.avisingh.legalease.data.model.Document
-import cm.avisingh.legalease.data.model.Notification
+import cm.avisingh.legalease.data.model.FirebaseDocument
+import cm.avisingh.legalease.security.InAppNotification
 import cm.avisingh.legalease.data.repository.DocumentRepository
 import cm.avisingh.legalease.data.repository.NotificationRepository
 import cm.avisingh.legalease.data.repository.UserRepository
@@ -14,17 +14,18 @@ import kotlinx.coroutines.launch
 
 class DashboardViewModel(application: Application) : AndroidViewModel(application) {
     private val documentRepository = DocumentRepository(application)
-    private val notificationRepository = NotificationRepository()
+    // TODO: Inject NotificationRepository properly when dependencies are set up
+    // private val notificationRepository = NotificationRepository()
     private val userRepository = UserRepository()
 
     private val _userStats = MutableStateFlow<UserStats>(UserStats())
     val userStats: StateFlow<UserStats> = _userStats
 
-    private val _recentDocuments = MutableStateFlow<List<Document>>(emptyList())
-    val recentDocuments: StateFlow<List<Document>> = _recentDocuments
+    private val _recentDocuments = MutableStateFlow<List<FirebaseDocument>>(emptyList())
+    val recentDocuments: StateFlow<List<FirebaseDocument>> = _recentDocuments
 
-    private val _notifications = MutableStateFlow<List<Notification>>(emptyList())
-    val notifications: StateFlow<List<Notification>> = _notifications
+    private val _notifications = MutableStateFlow<List<InAppNotification>>(emptyList())
+    val notifications: StateFlow<List<InAppNotification>> = _notifications
 
     private val _storageStats = MutableStateFlow<StorageStats>(StorageStats())
     val storageStats: StateFlow<StorageStats> = _storageStats
@@ -53,10 +54,8 @@ class DashboardViewModel(application: Application) : AndroidViewModel(applicatio
 
     fun loadNotifications() {
         viewModelScope.launch {
-            val userId = userRepository.currentUser?.uid ?: return@launch
-            notificationRepository.getNotifications(userId).collect { notifications ->
-                _notifications.value = notifications
-            }
+            // TODO: Load notifications when NotificationRepository is properly injected
+            _notifications.value = emptyList()
         }
     }
 

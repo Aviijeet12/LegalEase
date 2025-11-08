@@ -21,7 +21,8 @@ class AdvancedSearchDialog : DialogFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setStyle(STYLE_NORMAL, R.style.Theme_LegalEase_FullScreenDialog)
+        // TODO: Create Theme_LegalEase_FullScreenDialog theme
+        setStyle(STYLE_NORMAL, 0)
     }
 
     override fun onCreateView(
@@ -75,11 +76,11 @@ class AdvancedSearchDialog : DialogFragment() {
             val endDate = Date(selection.second)
             viewModel.setDateRange(startDate, endDate)
             
-            binding.dateRangeText.text = getString(
+            binding.dateRangeText.setText(getString(
                 R.string.date_range_format,
                 dateFormat.format(startDate),
                 dateFormat.format(endDate)
-            )
+            ))
         }
 
         dateRangePicker.show(parentFragmentManager, "DATE_RANGE_PICKER")
@@ -169,7 +170,7 @@ class AdvancedSearchDialog : DialogFragment() {
             categoryChipGroup.clearCheck()
             typeChipGroup.clearCheck()
             sortRadioGroup.check(R.id.radioRelevance)
-            dateRangeText.text = getString(R.string.any_date)
+            dateRangeText.setText(getString(R.string.any_date))
             sizeRangeSlider.values = listOf(0f, 100f)
         }
     }

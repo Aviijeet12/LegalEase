@@ -19,6 +19,8 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
+        // Initialize analytics helper
+        analyticsHelper = AnalyticsHelper(this)
         analyticsHelper.trackScreen(this::class.java.simpleName)
 
         sharedPrefManager = SharedPrefManager(this)
@@ -38,7 +40,7 @@ class SplashActivity : AppCompatActivity() {
                 Intent(this, MainActivity::class.java)
             }
             else -> {
-                Intent(this, LoginActivity::class.java)
+                Intent(this, cm.avisingh.legalease.ui.auth.LoginActivity::class.java)
             }
         }
 

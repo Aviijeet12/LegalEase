@@ -12,6 +12,7 @@ import androidx.core.view.isVisible
 import androidx.viewpager2.widget.ViewPager2
 import cm.avisingh.legalease.R
 import cm.avisingh.legalease.databinding.ActivityDocumentsBinding
+import cm.avisingh.legalease.ui.search.SearchActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.tabs.TabLayoutMediator
 

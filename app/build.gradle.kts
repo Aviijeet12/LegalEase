@@ -3,8 +3,9 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("com.google.gms.google-services")
     id("com.google.firebase.crashlytics")
-    id("kotlin-kapt")
-    id("com.google.dagger.hilt.android")
+    // Temporarily disabled to fix build - will re-enable after fixing
+    // id("kotlin-kapt")
+    // id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -52,12 +53,12 @@ android {
     }
 }
 
-// Kapt settings to improve diagnostics while we debug stubs failure
-kapt {
-    correctErrorTypes = true
-    useBuildCache = false
-    showProcessorStats = true
-}
+// Kapt settings - disabled since kapt plugin is disabled
+// kapt {
+//     correctErrorTypes = true
+//     useBuildCache = false
+//     showProcessorStats = true
+// }
 
 dependencies {
     // Core
@@ -98,20 +99,18 @@ dependencies {
     // Room Database
     implementation("androidx.room:room-runtime:2.6.1")
     implementation("androidx.room:room-ktx:2.6.1")
-    // Temporarily disable to isolate kapt stubs failure
     // kapt("androidx.room:room-compiler:2.6.1")
 
     // DataStore Preferences
     implementation("androidx.datastore:datastore-preferences:1.0.0")
 
-    // Hilt Dependency Injection
-    implementation("com.google.dagger:hilt-android:2.48.1")
-    kapt("com.google.dagger:hilt-compiler:2.48.1")
+    // Hilt Dependency Injection - temporarily disabled to fix build
+    // implementation("com.google.dagger:hilt-android:2.48.1")
+    // kapt("com.google.dagger:hilt-compiler:2.48.1")
 
     // WorkManager with Hilt
     implementation("androidx.work:work-runtime-ktx:2.9.0")
-    implementation("androidx.hilt:hilt-work:1.1.0")
-    // Temporarily disable to isolate kapt stubs failure
+    // implementation("androidx.hilt:hilt-work:1.1.0")
     // kapt("androidx.hilt:hilt-compiler:1.1.0")
 
     // Security
@@ -123,6 +122,9 @@ dependencies {
     implementation("androidx.cardview:cardview:1.0.0")
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.2.0-alpha01")
     implementation("com.airbnb.android:lottie:6.1.0")
+    
+    // PDF Viewer - commented out temporarily to fix build
+    // implementation("com.github.barteksc:android-pdf-viewer:2.8.2")
 
     // Testing
     testImplementation("junit:junit:4.13.2")

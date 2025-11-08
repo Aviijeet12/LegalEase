@@ -19,7 +19,8 @@ class UploadDocumentDialog : DialogFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setStyle(STYLE_NORMAL, R.style.ThemeOverlay_LegalEase_Dialog)
+        // TODO: Create ThemeOverlay_LegalEase_Dialog theme
+        setStyle(STYLE_NORMAL, 0)
     }
 
     override fun onCreateView(

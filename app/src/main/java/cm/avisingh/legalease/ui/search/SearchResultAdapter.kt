@@ -35,7 +35,7 @@ class SearchResultAdapter(
         fun bind(result: SearchResult, onResultClick: (SearchResult) -> Unit) {
             binding.apply {
                 resultIcon.setImageResource(result.iconResId)
-                categoryChip.text = result.category
+                categoryChip.text = result.category.displayName
                 titleText.text = result.title
                 descriptionText.text = result.description
                 matchText.text = result.matchText

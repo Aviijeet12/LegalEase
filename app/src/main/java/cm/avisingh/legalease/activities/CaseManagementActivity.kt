@@ -20,6 +20,7 @@ class CaseManagementActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCaseManagementBinding
     private lateinit var sharedPrefManager: SharedPrefManager
     private lateinit var caseAdapter: CaseAdapter
+    private lateinit var analyticsHelper: AnalyticsHelper
 
     private val allCases = mutableListOf<Case>()
 
@@ -31,7 +32,7 @@ class CaseManagementActivity : AppCompatActivity() {
         sharedPrefManager = SharedPrefManager(this)
 
         // Initialize analytics helper first
-        val analyticsHelper = (application as LegalEaseApplication).analyticsHelper
+        analyticsHelper = LegalEaseApplication.analyticsHelper
         analyticsHelper.trackScreenView("Case Management")
 
         setupUI()
@@ -182,7 +183,6 @@ class CaseManagementActivity : AppCompatActivity() {
             putExtra("case_id", case.id)
             putExtra("case_number", case.caseNumber)
         }
-        val analyticsHelper = (application as LegalEaseApplication).analyticsHelper
         analyticsHelper.trackEvent("case_viewed", mapOf("case_id" to case.id))
         analyticsHelper.trackEvent("feature_used", mapOf("feature" to "Case Details View"))
         startActivity(intent)
@@ -190,7 +190,6 @@ class CaseManagementActivity : AppCompatActivity() {
 
     private fun createNewCase() {
         Toast.makeText(this, getString(R.string.create_case_coming_soon), Toast.LENGTH_SHORT).show()
-        val analyticsHelper = (application as LegalEaseApplication).analyticsHelper
         analyticsHelper.trackEvent("case_created", mapOf("case_type" to "Civil"))
     }
 }

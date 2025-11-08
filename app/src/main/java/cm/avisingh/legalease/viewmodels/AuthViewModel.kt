@@ -17,15 +17,13 @@ class AuthViewModel : ViewModel() {
     fun loginUser(email: String, password: String, role: String) {
         _authState.value = AuthState.Loading
         viewModelScope.launch {
-            try {
-                val result = authService.loginUser(email, password)
-                if (result.isSuccess) {
+            when (val result = authService.loginUser(email, password)) {
+                is AuthService.Result.Success -> {
                     _authState.value = AuthState.Success(role)
-                } else {
-                    _authState.value = AuthState.Error(result.exceptionOrNull()?.message ?: "Login failed")
                 }
-            } catch (e: Exception) {
-                _authState.value = AuthState.Error(e.message ?: "Login failed")
+                is AuthService.Result.Failure -> {
+                    _authState.value = AuthState.Error(result.errorMessage)
+                }
             }
         }
     }
@@ -33,15 +31,13 @@ class AuthViewModel : ViewModel() {
     fun registerUser(email: String, password: String, fullName: String, role: String) {
         _authState.value = AuthState.Loading
         viewModelScope.launch {
-            try {
-                val result = authService.registerUser(email, password, fullName, role)
-                if (result.isSuccess) {
+            when (val result = authService.registerUser(email, password, fullName, role)) {
+                is AuthService.Result.Success -> {
                     _authState.value = AuthState.Success(role)
-                } else {
-                    _authState.value = AuthState.Error(result.exceptionOrNull()?.message ?: "Registration failed")
                 }
-            } catch (e: Exception) {
-                _authState.value = AuthState.Error(e.message ?: "Registration failed")
+                is AuthService.Result.Failure -> {
+                    _authState.value = AuthState.Error(result.errorMessage)
+                }
             }
         }
     }

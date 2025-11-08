@@ -1,14 +1,16 @@
 package cm.avisingh.legalease.notifications
 
+import cm.avisingh.legalease.data.repository.NotificationRepository
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
-import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
-@AndroidEntryPoint
 class FCMService : FirebaseMessagingService() {
-    @Inject lateinit var notificationHelper: NotificationHelper
-    @Inject lateinit var notificationRepository: NotificationRepository
+    // TODO: Initialize these properly after removing Hilt completely
+    private val notificationHelper by lazy { NotificationHelper(applicationContext) }
+    private val notificationRepository by lazy { 
+        // NotificationRepository(...)  // Needs DAO, managers, etc. - stub for now
+        null
+    }
 
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
         super.onMessageReceived(remoteMessage)
@@ -37,8 +39,8 @@ class FCMService : FirebaseMessagingService() {
 
     override fun onNewToken(token: String) {
         super.onNewToken(token)
-        // Update FCM token in Firebase
-        notificationRepository.updateFCMToken(token)
+        // TODO: Update FCM token in Firebase after proper DI setup
+        // notificationRepository?.updateFCMToken(token)
     }
 
     private fun saveNotification(
@@ -47,14 +49,8 @@ class FCMService : FirebaseMessagingService() {
         message: String,
         data: Map<String, String>
     ) {
-        val notification = InAppNotification(
-            type = type,
-            title = title,
-            message = message,
-            data = data,
-            timestamp = System.currentTimeMillis(),
-            isRead = false
-        )
-        notificationRepository.saveNotification(notification)
+        // TODO: Save notification after proper DI setup
+        // val notification = InAppNotification(...)
+        // notificationRepository?.saveNotification(notification)
     }
 }

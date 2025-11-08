@@ -6,13 +6,9 @@ import android.content.Context
 import android.os.Build
 import androidx.core.app.NotificationManagerCompat
 import cm.avisingh.legalease.R
-import dagger.hilt.android.qualifiers.ApplicationContext
-import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton
-class NotificationChannelManager @Inject constructor(
-    @ApplicationContext private val context: Context
+class NotificationChannelManager(
+    private val context: Context
 ) {
     init {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {

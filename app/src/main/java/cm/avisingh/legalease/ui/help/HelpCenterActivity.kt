@@ -74,7 +74,7 @@ class HelpCenterActivity : AppCompatActivity() {
                 "Family Law",
                 "Marriage Registration Guide",
                 "Step-by-step guide for marriage registration in India",
-                R.drawable.img_marriage_registration
+                R.drawable.ic_notification // TODO: Create img_marriage_registration drawable
             ),
             // Add more guides
         )

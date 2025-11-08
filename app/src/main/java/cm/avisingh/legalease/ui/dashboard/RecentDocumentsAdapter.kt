@@ -5,14 +5,15 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import cm.avisingh.legalease.data.model.Document
+import cm.avisingh.legalease.R
+import cm.avisingh.legalease.data.model.FirebaseDocument
 import cm.avisingh.legalease.databinding.ItemRecentDocumentBinding
 import java.text.SimpleDateFormat
 import java.util.*
 
 class RecentDocumentsAdapter(
-    private val onDocumentClick: (Document) -> Unit
-) : ListAdapter<Document, RecentDocumentsAdapter.ViewHolder>(DIFF_CALLBACK) {
+    private val onDocumentClick: (FirebaseDocument) -> Unit
+) : ListAdapter<FirebaseDocument, RecentDocumentsAdapter.ViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ItemRecentDocumentBinding.inflate(
@@ -31,7 +32,7 @@ class RecentDocumentsAdapter(
         private val binding: ItemRecentDocumentBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(document: Document) {
+        fun bind(document: FirebaseDocument) {
             binding.apply {
                 fileNameText.text = document.name
                 fileSizeText.text = formatFileSize(document.size)
@@ -79,11 +80,11 @@ class RecentDocumentsAdapter(
     }
 
     companion object {
-        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Document>() {
-            override fun areItemsTheSame(oldItem: Document, newItem: Document) =
+        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<FirebaseDocument>() {
+            override fun areItemsTheSame(oldItem: FirebaseDocument, newItem: FirebaseDocument) =
                 oldItem.id == newItem.id
 
-            override fun areContentsTheSame(oldItem: Document, newItem: Document) =
+            override fun areContentsTheSame(oldItem: FirebaseDocument, newItem: FirebaseDocument) =
                 oldItem == newItem
         }
     }
