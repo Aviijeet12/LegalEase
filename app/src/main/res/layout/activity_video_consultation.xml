@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black">
+
+    <!-- Remote Video View -->
+    <org.webrtc.SurfaceViewRenderer
+        android:id="@+id/remoteVideoView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- Local Video View -->
+    <org.webrtc.SurfaceViewRenderer
+        android:id="@+id/localVideoView"
+        android:layout_width="120dp"
+        android:layout_height="160dp"
+        android:layout_margin="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Call Duration -->
+    <TextView
+        android:id="@+id/callDuration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:background="@drawable/bg_call_duration"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="6dp"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Call Controls -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="24dp"
+        app:cardBackgroundColor="@color/scrim"
+        app:cardCornerRadius="28dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <!-- Mute Button -->
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/muteButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:src="@drawable/ic_mic"
+                app:backgroundTint="@color/surface"
+                app:fabSize="mini"
+                app:tint="@color/legal_blue" />
+
+            <!-- Video Toggle Button -->
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/videoToggleButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:src="@drawable/ic_videocam"
+                app:backgroundTint="@color/surface"
+                app:fabSize="mini"
+                app:tint="@color/legal_blue" />
+
+            <!-- End Call Button -->
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/endCallButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:src="@drawable/ic_call_end"
+                app:backgroundTint="@color/error"
+                app:fabSize="normal"
+                app:tint="@color/white" />
+
+            <!-- Switch Camera Button -->
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/switchCameraButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:src="@drawable/ic_switch_camera"
+                app:backgroundTint="@color/surface"
+                app:fabSize="mini"
+                app:tint="@color/legal_blue" />
+
+            <!-- Chat Button -->
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/chatButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:src="@drawable/ic_chat"
+                app:backgroundTint="@color/surface"
+                app:fabSize="mini"
+                app:tint="@color/legal_blue" />
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Chat Bottom Sheet -->
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/chatBottomSheet"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <com.google.android.material.bottomsheet.BottomSheetBehavior
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:behavior_peekHeight="400dp"
+            app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/surface"
+                app:cardCornerRadius="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:text="Chat"
+                        android:textAppearance="@style/TextAppearance.LegalEase.HeadlineSmall" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/chatRecyclerView"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:padding="16dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="8dp">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/Widget.LegalEase.TextInputLayout"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/messageInput"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Type a message..." />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <ImageButton
+                            android:id="@+id/sendButton"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:layout_gravity="bottom"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:src="@drawable/ic_send"
+                            app:tint="@color/legal_blue" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </com.google.android.material.bottomsheet.BottomSheetBehavior>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

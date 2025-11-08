@@ -1,0 +1,41 @@
+<resources>
+<string name="app_name">LegalEase</string>
+<string name="login">Login</string>
+<string name="register">Register</string>
+<string name="email">Email</string>
+<string name="password">Password</string>
+<string name="full_name">Full Name</string>
+<string name="welcome">Welcome to LegalEase</string>
+<string name="my_cases">My Cases</string>
+<string name="documents">Documents</string>
+<string name="create_new_case">Create New Case</string>
+<string name="generate_document">Generate Document</string>
+<string name="loading">Loading...</string>
+<string name="error_occurred">An error occurred</string>
+    <string name="onboarding_image">Onboarding illustration</string>
+
+    <string name="onboarding_title_1">Welcome to LegalEase</string>
+    <string name="onboarding_description_1">Manage your legal cases efficiently with our comprehensive case management system</string>
+
+    <string name="onboarding_title_2">Track Case Progress</string>
+    <string name="onboarding_description_2">Monitor your cases with real-time updates and timeline tracking</string>
+
+    <string name="onboarding_title_3">Secure &amp; Confidential</string>
+
+    <string name="onboarding_description_3">Your legal documents and case details are protected with enterprise-grade security</string>
+    <string name="signup_coming_soon">Sign up feature coming soon!</string>
+    <string name="password_reset_coming_soon">Password reset coming soon!</string>
+    <string name="email_required">Email is required</string>
+    <string name="valid_email_required">Enter a valid email address</string>
+    <string name="password_required">Password is required</string>
+    <string name="password_min_length">Password must be at least 6 characters</string>
+    <string name="signing_in">Signing In…</string>
+    <string name="login_failed">Login failed</string>
+    <string name="login_error">Login error: %s</string>
+    <string name="default_user_name">User</string>
+    <string name="welcome_message">Welcome to LegalEase!</string>
+    <string name="sign_in">Sign In</string>
+    <string name="get_started">Get Started</string>
+    <string name="next">Next</string>
+    <string name="skip">Skip</string>
+</resources>

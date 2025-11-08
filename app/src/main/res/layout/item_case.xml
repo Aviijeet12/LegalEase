@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="4dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true">
+
+        <!-- Case Header -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:id="@+id/tvCaseNumber"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="#CASE-2024-001"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/legal_blue" />
+
+            <TextView
+                android:id="@+id/tvStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Active"
+                android:textSize="12sp"
+                android:textColor="@color/white"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="4dp"
+                android:background="@color/green"
+                android:gravity="center" />
+
+        </LinearLayout>
+
+        <!-- Case Title -->
+        <TextView
+            android:id="@+id/tvCaseTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Property Dispute - Miller vs Johnson"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginBottom="4dp" />
+
+        <!-- Client Info -->
+        <TextView
+            android:id="@+id/tvClientName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Client: Robert Miller"
+            android:textSize="12sp"
+            android:textColor="@color/gray"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Case Details -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:id="@+id/tvCaseType"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Civil Law"
+                android:textSize="12sp"
+                android:textColor="@color/gray" />
+
+            <TextView
+                android:id="@+id/tvPriority"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="High"
+                android:textSize="12sp"
+                android:textColor="@color/white"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="2dp"
+                android:background="@color/red"
+                android:gravity="center" />
+
+        </LinearLayout>
+
+        <!-- Next Hearing -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/ic_calendar"
+                android:tint="@color/legal_blue"
+                android:layout_marginEnd="4dp" />
+
+            <TextView
+                android:id="@+id/tvNextHearing"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Next: Jan 15, 2024"
+                android:textSize="12sp"
+                android:textColor="@color/legal_blue" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

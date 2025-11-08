@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="any_date">Any date</string>
+    <string name="date_range_format">%1$s - %2$s</string>
+    <array name="initial_slider_values">
+        <item>0</item>
+        <item>100</item>
+    </array>
+</resources>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Notification Settings -->
+    <string name="notification_settings">Notification Settings</string>
+    <string name="general_settings">General Settings</string>
+    <string name="notification_types">Notification Types</string>
+    
+    <!-- General Settings -->
+    <string name="push_notifications">Push Notifications</string>
+    <string name="email_notifications">Email Notifications</string>
+    <string name="in_app_notifications">In-App Notifications</string>
+    
+    <!-- Notification Types -->
+    <string name="case_updates">Case Updates</string>
+    <string name="document_ready">Document Ready</string>
+    <string name="appointments">Appointments</string>
+    <string name="deadlines">Deadlines</string>
+    <string name="security_alerts">Security Alerts</string>
+    
+    <!-- Notification Channels -->
+    <string name="channel_name_general">General Notifications</string>
+    <string name="channel_description_general">Important updates and notifications from LegalEase</string>
+    <string name="channel_name_case_updates">Case Updates</string>
+    <string name="channel_description_case_updates">Updates about your legal cases</string>
+    <string name="channel_name_documents">Document Notifications</string>
+    <string name="channel_description_documents">Notifications about documents and files</string>
+    <string name="channel_name_appointments">Appointment Reminders</string>
+    <string name="channel_description_appointments">Reminders for upcoming appointments</string>
+    <string name="channel_name_security">Security Alerts</string>
+    <string name="channel_description_security">Important security-related notifications</string>
+</resources>

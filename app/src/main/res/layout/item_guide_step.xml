@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="16dp"
+    android:orientation="horizontal">
+
+    <!-- Step Number Circle -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        app:cardBackgroundColor="@color/legal_blue"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="0dp">
+
+        <TextView
+            android:id="@+id/stepNumberText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.LegalEase.LabelMedium"
+            android:textColor="@color/white" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Step Content -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/stepTitleText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.LegalEase.TitleSmall" />
+
+        <TextView
+            android:id="@+id/stepDescriptionText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textAppearance="@style/TextAppearance.LegalEase.BodyMedium"
+            android:textColor="@color/text_secondary" />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Text Appearances -->
+    <style name="TextAppearance.LegalEase.HeadlineLarge" parent="TextAppearance.Material3.HeadlineLarge">
+        <item name="fontFamily">sans-serif-bold</item>
+        <item name="android:textSize">32sp</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="lineHeight">40sp</item>
+    </style>
+
+    <style name="TextAppearance.LegalEase.HeadlineMedium" parent="TextAppearance.Material3.HeadlineMedium">
+        <item name="fontFamily">sans-serif-bold</item>
+        <item name="android:textSize">28sp</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="lineHeight">36sp</item>
+    </style>
+
+    <style name="TextAppearance.LegalEase.HeadlineSmall" parent="TextAppearance.Material3.HeadlineSmall">
+        <item name="fontFamily">sans-serif-medium</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="lineHeight">32sp</item>
+    </style>
+
+    <style name="TextAppearance.LegalEase.TitleLarge" parent="TextAppearance.Material3.TitleLarge">
+        <item name="fontFamily">sans-serif-medium</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="lineHeight">28sp</item>
+    </style>
+
+    <style name="TextAppearance.LegalEase.TitleMedium" parent="TextAppearance.Material3.TitleMedium">
+        <item name="fontFamily">sans-serif-medium</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:letterSpacing">0.015</item>
+        <item name="lineHeight">24sp</item>
+    </style>
+
+    <style name="TextAppearance.LegalEase.LabelMedium" parent="TextAppearance.Material3.LabelMedium">
+        <item name="fontFamily">sans-serif-medium</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:letterSpacing">0.05</item>
+        <item name="lineHeight">16sp</item>
+    </style>
+
+    <style name="TextAppearance.LegalEase.BodyLarge" parent="TextAppearance.Material3.BodyLarge">
+        <item name="fontFamily">sans-serif</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:letterSpacing">0.03</item>
+        <item name="lineHeight">24sp</item>
+    </style>
+
+    <style name="TextAppearance.LegalEase.BodyMedium" parent="TextAppearance.Material3.BodyMedium">
+        <item name="fontFamily">sans-serif</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:letterSpacing">0.02</item>
+        <item name="lineHeight">20sp</item>
+    </style>
+
+    <!-- Shape Appearances -->
+    <style name="ShapeAppearance.LegalEase.SmallComponent" parent="ShapeAppearance.Material3.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">8dp</item>
+    </style>
+
+    <style name="ShapeAppearance.LegalEase.MediumComponent" parent="ShapeAppearance.Material3.MediumComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">12dp</item>
+    </style>
+
+    <style name="ShapeAppearance.LegalEase.LargeComponent" parent="ShapeAppearance.Material3.LargeComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">16dp</item>
+    </style>
+</resources>

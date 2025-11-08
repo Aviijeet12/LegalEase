@@ -1,0 +1,61 @@
+rules_version = '2';
+
+service firebase.storage {
+  match /b/{bucket}/o {
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+    
+    function hasRole(role) {
+      return isAuthenticated() && firestore.get(/databases/(default)/documents/users/$(request.auth.uid)).data.role == role;
+    }
+    
+    function isValidContentType() {
+      return request.resource.contentType.matches('application/pdf|image/.*|application/msword|application/vnd.openxmlformats-officedocument.wordprocessingml.document');
+    }
+    
+    function isValidSize() {
+      return request.resource.size <= 100 * 1024 * 1024; // 100MB limit
+    }
+
+    // Document storage rules
+    match /documents/{userId}/{document=**} {
+      allow read: if isAuthenticated() && (
+        isOwner(userId) ||
+        hasRole('admin') ||
+        firestore.get(/databases/(default)/documents/documents/$(document)).data.sharedWith[request.auth.uid] == true
+      );
+      allow create: if isAuthenticated() && 
+        isOwner(userId) && 
+        isValidContentType() && 
+        isValidSize();
+      allow update: if isAuthenticated() && 
+        isOwner(userId) && 
+        isValidContentType() && 
+        isValidSize();
+      allow delete: if isAuthenticated() && 
+        (isOwner(userId) || hasRole('admin'));
+    }
+
+    // Thumbnail storage rules
+    match /thumbnails/{userId}/{thumbnail=**} {
+      allow read: if isAuthenticated() && (
+        isOwner(userId) ||
+        hasRole('admin') ||
+        firestore.get(/databases/(default)/documents/documents/$(thumbnail)).data.sharedWith[request.auth.uid] == true
+      );
+      allow write: if false; // Only Cloud Functions can write thumbnails
+    }
+
+    // Temporary storage for processing
+    match /temp/{userId}/{file=**} {
+      allow read, write: if isAuthenticated() && isOwner(userId);
+      allow delete: if isAuthenticated() && (isOwner(userId) || hasRole('admin'));
+    }
+  }
+}

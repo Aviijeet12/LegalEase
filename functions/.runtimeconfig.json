@@ -1,0 +1,12 @@
+{
+  "sendgrid": {
+    "key": "YOUR_SENDGRID_API_KEY"
+  },
+  "email": {
+    "from_address": "notifications@legalease.com"
+  },
+  "app": {
+    "name": "LegalEase",
+    "region": "asia-south1"
+  }
+}

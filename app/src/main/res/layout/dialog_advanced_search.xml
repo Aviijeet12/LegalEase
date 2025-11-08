@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:title="Advanced Search"
+        app:navigationIcon="@drawable/ic_close"
+        app:menu="@menu/menu_advanced_search" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Date Range -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/dateRangeLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:hint="Date Range">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/dateRangeText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:text="@string/any_date" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Categories -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Categories"
+                android:textAppearance="?attr/textAppearanceSubtitle1"
+                android:layout_marginBottom="8dp" />
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/categoryChipGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:chipSpacingHorizontal="8dp" />
+
+            <!-- Document Types -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Document Types"
+                android:textAppearance="?attr/textAppearanceSubtitle1"
+                android:layout_marginBottom="8dp" />
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/typeChipGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:chipSpacingHorizontal="8dp" />
+
+            <!-- Sort By -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sort By"
+                android:textAppearance="?attr/textAppearanceSubtitle1"
+                android:layout_marginBottom="8dp" />
+
+            <RadioGroup
+                android:id="@+id/sortRadioGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp">
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/radioRelevance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Most relevant"
+                    android:checked="true" />
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/radioDateNewest"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Date (Newest first)" />
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/radioDateOldest"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Date (Oldest first)" />
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/radioNameAZ"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Name (A-Z)" />
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/radioNameZA"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Name (Z-A)" />
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/radioSizeLargest"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Size (Largest first)" />
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/radioSizeSmallest"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Size (Smallest first)" />
+
+            </RadioGroup>
+
+            <!-- File Size -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="File Size (MB)"
+                android:textAppearance="?attr/textAppearanceSubtitle1"
+                android:layout_marginBottom="8dp" />
+
+            <com.google.android.material.slider.RangeSlider
+                android:id="@+id/sizeRangeSlider"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:valueFrom="0"
+                android:valueTo="100"
+                app:values="@array/initial_slider_values" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- Apply Button -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/applyButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="Apply Filters" />
+
+</LinearLayout>

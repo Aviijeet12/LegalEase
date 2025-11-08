@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+    <!-- Chat Header -->
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbarChat"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/legal_blue"
+        android:theme="@style/ThemeOverlay.Material3.Dark.ActionBar">
+
+        <ImageView
+            android:id="@+id/ivBack"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_arrow_back"
+            android:tint="@color/white"
+            android:layout_marginStart="8dp"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginStart="16dp">
+
+            <TextView
+                android:id="@+id/tvChatUserName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Advocate Sharma"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvChatStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Online"
+                android:textColor="@color/light_gray"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/ivCall"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_call"
+            android:tint="@color/white"
+            android:layout_marginEnd="16dp"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true" />
+
+        <ImageView
+            android:id="@+id/ivVideoCall"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_video_call"
+            android:tint="@color/white"
+            android:layout_marginEnd="8dp"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true" />
+
+    </com.google.android.material.appbar.MaterialToolbar>
+
+    <!-- Messages RecyclerView -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvMessages"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="8dp" />
+
+    <!-- Message Input Area -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:background="@color/light_gray_bg">
+
+        <ImageView
+            android:id="@+id/ivAttach"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_attach"
+            android:tint="@color/legal_blue"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:layout_marginEnd="8dp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:boxBackgroundMode="outline"
+            app:boxBackgroundColor="@color/white"
+            app:boxCornerRadiusBottomEnd="24dp"
+            app:boxCornerRadiusBottomStart="24dp"
+            app:boxCornerRadiusTopEnd="24dp"
+            app:boxCornerRadiusTopStart="24dp"
+            app:boxStrokeColor="@color/light_gray">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etMessage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Type a message..."
+                android:maxLines="5"
+                android:paddingVertical="12dp"
+                android:paddingHorizontal="16dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <ImageView
+            android:id="@+id/ivSend"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_send"
+            android:tint="@color/legal_blue"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:layout_marginStart="8dp" />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/surface">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:navigationIcon="@drawable/ic_back"
+            app:title="Schedule Appointment" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Appointment Type Selection -->
+            <com.google.android.material.card.MaterialCardView
+                style="@style/Widget.LegalEase.Card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Appointment Type"
+                        android:textAppearance="@style/TextAppearance.LegalEase.HeadlineSmall" />
+
+                    <RadioGroup
+                        android:id="@+id/appointmentTypeGroup"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp">
+
+                        <com.google.android.material.radiobutton.MaterialRadioButton
+                            android:id="@+id/videoCallRadio"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Video Call" />
+
+                        <com.google.android.material.radiobutton.MaterialRadioButton
+                            android:id="@+id/inPersonRadio"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="In-Person Meeting" />
+
+                        <com.google.android.material.radiobutton.MaterialRadioButton
+                            android:id="@+id/phoneCallRadio"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Phone Call" />
+
+                    </RadioGroup>
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Date Selection -->
+            <com.google.android.material.card.MaterialCardView
+                style="@style/Widget.LegalEase.Card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Select Date"
+                        android:textAppearance="@style/TextAppearance.LegalEase.HeadlineSmall" />
+
+                    <CalendarView
+                        android:id="@+id/calendarView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp" />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Time Slots -->
+            <com.google.android.material.card.MaterialCardView
+                style="@style/Widget.LegalEase.Card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Available Time Slots"
+                        android:textAppearance="@style/TextAppearance.LegalEase.HeadlineSmall" />
+
+                    <com.google.android.material.chip.ChipGroup
+                        android:id="@+id/timeSlotChipGroup"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp" />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Notes -->
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.LegalEase.TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:hint="Additional Notes">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/notesInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="top"
+                    android:inputType="textMultiLine"
+                    android:lines="4" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Book Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/bookButton"
+                style="@style/Widget.LegalEase.Button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Book Appointment" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

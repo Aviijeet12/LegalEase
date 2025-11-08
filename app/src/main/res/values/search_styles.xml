@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Search TextInputLayout Style -->
+    <style name="Widget.LegalEase.TextInputLayout.Search" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="boxBackgroundColor">@android:color/transparent</item>
+        <item name="boxStrokeWidth">0dp</item>
+        <item name="boxStrokeWidthFocused">0dp</item>
+        <item name="endIconTint">@color/text_secondary</item>
+        <item name="startIconTint">@color/text_secondary</item>
+    </style>
+
+    <!-- Bottom Sheet Handle Background -->
+    <style name="ShapeAppearance.LegalEase.Circle" parent="">
+        <item name="cornerSize">50%</item>
+    </style>
+</resources>

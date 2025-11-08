@@ -1,0 +1,74 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Common helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+    
+    function hasRole(role) {
+      return isAuthenticated() && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == role;
+    }
+
+    // User profiles
+    match /users/{userId} {
+      allow read: if isAuthenticated();
+      allow write: if isOwner(userId);
+    }
+
+    // Documents
+    match /documents/{documentId} {
+      allow read: if isAuthenticated() && (
+        resource.data.userId == request.auth.uid ||
+        resource.data.sharedWith[request.auth.uid] == true ||
+        hasRole('admin')
+      );
+      allow write: if isAuthenticated() && (
+        resource.data.userId == request.auth.uid ||
+        hasRole('admin')
+      );
+    }
+
+    // Document access logs
+    match /document_access_logs/{logId} {
+      allow read: if hasRole('admin');
+      allow create: if isAuthenticated();
+      allow update, delete: if hasRole('admin');
+    }
+
+    // Notifications
+    match /notifications/{notificationId} {
+      allow read: if isAuthenticated() && resource.data.userId == request.auth.uid;
+      allow create: if isAuthenticated();
+      allow update: if isAuthenticated() && resource.data.userId == request.auth.uid;
+      allow delete: if isAuthenticated() && resource.data.userId == request.auth.uid;
+    }
+
+    // Security logs
+    match /security_logs/{logId} {
+      allow read: if hasRole('admin');
+      allow create: if isAuthenticated();
+      allow update, delete: if hasRole('admin');
+    }
+
+    // Security alerts
+    match /security_alerts/{alertId} {
+      allow read: if hasRole('admin');
+      allow create: if hasRole('admin');
+      allow update, delete: if hasRole('admin');
+    }
+
+    // Email notifications
+    match /email_notifications/{notificationId} {
+      allow read: if isAuthenticated() && resource.data.userId == request.auth.uid;
+      allow create: if isAuthenticated();
+      allow update: if false;
+      allow delete: if hasRole('admin');
+    }
+  }
+}

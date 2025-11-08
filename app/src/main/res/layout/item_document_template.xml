@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/Widget.LegalEase.Card"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    android:clickable="true"
+    android:focusable="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/templateIcon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/bg_template_icon"
+            android:padding="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/legal_blue" />
+
+        <TextView
+            android:id="@+id/templateTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:textAppearance="@style/TextAppearance.LegalEase.HeadlineSmall"
+            app:layout_constraintEnd_toStartOf="@id/useButton"
+            app:layout_constraintStart_toEndOf="@id/templateIcon"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Rental Agreement" />
+
+        <TextView
+            android:id="@+id/templateDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="16dp"
+            android:textAppearance="@style/TextAppearance.LegalEase.BodyMedium"
+            android:textColor="@color/text_secondary"
+            app:layout_constraintEnd_toStartOf="@id/useButton"
+            app:layout_constraintStart_toEndOf="@id/templateIcon"
+            app:layout_constraintTop_toBottomOf="@id/templateTitle"
+            tools:text="Standard rental agreement template with customizable terms and conditions" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/categoryChip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toEndOf="@id/templateIcon"
+            app:layout_constraintTop_toBottomOf="@id/templateDescription"
+            tools:text="Agreement" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/useButton"
+            style="@style/Widget.LegalEase.Button.Outlined"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Use"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

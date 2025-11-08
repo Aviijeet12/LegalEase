@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="?android:attr/selectableItemBackground">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="8dp">
+
+        <TextView
+            android:id="@+id/tvEventTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Event Title"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/tvEventType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="HEARING"
+            android:textSize="12sp"
+            android:textColor="@color/white"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="4dp"
+            android:background="@color/hearing_color"
+            android:gravity="center" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvEventDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Event description goes here"
+        android:textSize="14sp"
+        android:textColor="@color/gray"
+        android:layout_marginBottom="8dp"
+        android:lineSpacingExtra="4dp" />
+
+    <TextView
+        android:id="@+id/tvEventDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Jan 15, 2024"
+        android:textSize="12sp"
+        android:textColor="@color/dark_gray"
+        android:drawableStart="@drawable/ic_calendar"
+        android:drawablePadding="4dp" />
+
+</LinearLayout>

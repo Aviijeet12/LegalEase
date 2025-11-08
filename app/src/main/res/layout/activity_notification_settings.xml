@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:navigationIcon="@drawable/ic_back" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- General Settings -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="General"
+                android:textAppearance="?attr/textAppearanceSubtitle1"
+                android:layout_marginBottom="16dp" />
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/pushNotificationsSwitch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Push Notifications"
+                android:layout_marginBottom="8dp" />
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/emailNotificationsSwitch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Email Notifications"
+                android:layout_marginBottom="24dp" />
+
+            <!-- Notification Types -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Notification Types"
+                android:textAppearance="?attr/textAppearanceSubtitle1"
+                android:layout_marginBottom="16dp" />
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/documentSharingSwitch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Document Sharing"
+                android:layout_marginBottom="8dp" />
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/documentUpdatesSwitch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Document Updates"
+                android:layout_marginBottom="8dp" />
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/commentsSwitch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Comments"
+                android:layout_marginBottom="8dp" />
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/systemUpdatesSwitch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="System Updates"
+                android:layout_marginBottom="24dp" />
+
+            <!-- Help Text -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Turn on push notifications to receive instant updates about your documents, comments, and system updates. Email notifications will be sent for important updates even when push notifications are disabled."
+                android:textAppearance="?attr/textAppearanceCaption"
+                android:textColor="?android:textColorSecondary"
+                android:layout_marginBottom="16dp" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

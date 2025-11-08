@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- LegalEase Colors -->
+    <color name="legal_blue">#FF1976D2</color>
+    <color name="legal_blue_dark">#FF004BA0</color>
+    <color name="legal_blue_light">#FFE3F2FD</color>
+    <color name="legal_dark_blue">#FF0D47A1</color>
+    <color name="legal_light_blue">#FFE3F2FD</color>
+    <color name="legal_accent">#FFFF4081</color>
+    <color name="legal_accent_dark">#FFC60055</color>
+    <color name="legal_gold">#FFFFD700</color>
+    <color name="gray">#FF757575</color>
+    <color name="light_blue">#E6ECFF</color>
+    <color name="light_green">#E6F7EE</color>
+    <color name="green">#00C851</color>
+    <color name="orange">#FF9800</color>
+    <color name="red">#F44336</color>
+    <color name="light_gray_bg">#F5F5F5</color>
+    <color name="light_gray">#E0E0E0</color>
+    <color name="hearing_color">#FFA000</color>
+    <color name="document_color">#2196F3</color>
+    <color name="note_color">#4CAF50</color>
+    <color name="filed_color">#9C27B0</color>
+    <color name="judgment_color">#F44336</color>
+    <color name="appeal_color">#FF9800</color>
+    <color name="default_color">#607D8B</color>
+    <color name="dark_gray">#616161</color>
+    <color name="inspection_color">#4CAF50</color>
+    <color name="surface">#FFFFFF</color>
+    <color name="background">#FFFFFF</color>
+    <color name="text_primary">#DE000000</color>
+    <color name="text_secondary">#99000000</color>
+    <color name="scrim_light">#99000000</color>
+    <color name="scrim">#99000000</color>
+    <color name="error">#F44336</color>
+    <color name="success">#4CAF50</color>
+</resources>
