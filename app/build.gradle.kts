@@ -81,6 +81,9 @@ dependencies {
     implementation("com.google.firebase:firebase-analytics-ktx:21.5.0")
     implementation("com.google.firebase:firebase-crashlytics-ktx:18.6.0")
     implementation("com.google.firebase:firebase-config-ktx:21.6.0")
+    
+    // Google Sign-In
+    implementation("com.google.android.gms:play-services-auth:20.7.0")
 
     // Coroutines for Firebase
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")

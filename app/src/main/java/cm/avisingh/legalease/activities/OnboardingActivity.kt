@@ -2,6 +2,7 @@ package cm.avisingh.legalease.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
 import cm.avisingh.legalease.R
@@ -17,11 +18,13 @@ class OnboardingActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Log.d("OnboardingActivity", "onCreate started")
         binding = ActivityOnboardingBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         setupOnboarding()
         setupClickListeners()
+        Log.d("OnboardingActivity", "onCreate completed")
     }
 
     private fun setupOnboarding() {
@@ -79,8 +82,15 @@ class OnboardingActivity : AppCompatActivity() {
     }
 
     private fun navigateToLogin() {
-        val intent = Intent(this, cm.avisingh.legalease.ui.auth.LoginActivity::class.java)
-        startActivity(intent)
-        finish()
+        try {
+            Log.d("OnboardingActivity", "Navigating to LoginActivity")
+            val intent = Intent(this, cm.avisingh.legalease.ui.auth.LoginActivity::class.java)
+            startActivity(intent)
+            Log.d("OnboardingActivity", "LoginActivity started")
+            finish()
+        } catch (e: Exception) {
+            Log.e("OnboardingActivity", "Error navigating to Login", e)
+            e.printStackTrace()
+        }
     }
 }

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="2dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:gravity="center_vertical">
+
+        <!-- Client Avatar -->
+        <TextView
+            android:id="@+id/tvClientInitial"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:gravity="center"
+            android:text="RK"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:background="@drawable/bg_avatar_circle"
+            android:backgroundTint="@color/legal_blue"
+            tools:text="RK" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginStart="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/tvClientName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Rajesh Kumar"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    tools:text="Rajesh Kumar" />
+
+                <TextView
+                    android:id="@+id/tvClientStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Active"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/status_active"
+                    tools:text="Active" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvClientEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="rajesh.kumar@email.com"
+                android:textSize="13sp"
+                android:textColor="@color/gray"
+                android:layout_marginTop="4dp"
+                android:drawableStart="@drawable/ic_email"
+                android:drawablePadding="8dp"
+                android:drawableTint="@color/gray"
+                tools:text="rajesh.kumar@email.com" />
+
+            <TextView
+                android:id="@+id/tvClientPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="+91 98765 43210"
+                android:textSize="13sp"
+                android:textColor="@color/gray"
+                android:layout_marginTop="4dp"
+                android:drawableStart="@drawable/ic_phone"
+                android:drawablePadding="8dp"
+                android:drawableTint="@color/gray"
+                tools:text="+91 98765 43210" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp">
+
+                <TextView
+                    android:id="@+id/tvActiveCases"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2 Active Cases"
+                    android:textSize="12sp"
+                    android:textColor="@color/legal_blue"
+                    android:textStyle="bold"
+                    android:layout_marginEnd="16dp"
+                    tools:text="2 Active Cases" />
+
+                <TextView
+                    android:id="@+id/tvTotalCases"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total: 5 cases"
+                    android:textSize="12sp"
+                    android:textColor="@color/gray"
+                    tools:text="Total: 5 cases" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

@@ -43,11 +43,17 @@ class SharedPrefManager(context: Context) {
     }
 
     fun setUserRole(role: String) {
-        sharedPreferences.edit().putString(KEY_USER_ROLE, role).apply()
+        android.util.Log.d("SharedPrefManager", "Setting user role: '$role'")
+        val success = sharedPreferences.edit().putString(KEY_USER_ROLE, role).commit()
+        android.util.Log.d("SharedPrefManager", "Role save success: $success")
+        val verified = sharedPreferences.getString(KEY_USER_ROLE, "")
+        android.util.Log.d("SharedPrefManager", "Verified role after save: '$verified'")
     }
 
     fun getUserRole(): String {
-        return sharedPreferences.getString(KEY_USER_ROLE, "") ?: ""
+        val role = sharedPreferences.getString(KEY_USER_ROLE, "") ?: ""
+        android.util.Log.d("SharedPrefManager", "Getting user role: '$role'")
+        return role
     }
 
     fun setUserEmail(email: String) {

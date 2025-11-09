@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="2dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <!-- Priority Indicator -->
+        <View
+            android:id="@+id/viewPriorityIndicator"
+            android:layout_width="4dp"
+            android:layout_height="match_parent"
+            android:background="@color/error_red" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/tvCaseNumber"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="CRL/2024/001234"
+                    android:textSize="12sp"
+                    android:textColor="@color/gray"
+                    android:textStyle="bold"
+                    tools:text="CRL/2024/001234" />
+
+                <TextView
+                    android:id="@+id/tvStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Active"
+                    android:textSize="11sp"
+                    android:textColor="@color/white"
+                    android:background="@color/status_active"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="4dp"
+                    android:textStyle="bold"
+                    tools:text="Active" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvCaseTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="State vs. Rajesh Kumar"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_marginTop="8dp"
+                tools:text="State vs. Rajesh Kumar" />
+
+            <TextView
+                android:id="@+id/tvClientName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Client: Rajesh Kumar"
+                android:textSize="14sp"
+                android:textColor="@color/gray"
+                android:layout_marginTop="4dp"
+                tools:text="Client: Rajesh Kumar" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp">
+
+                <TextView
+                    android:id="@+id/tvCaseType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Criminal"
+                    android:textSize="12sp"
+                    android:textColor="@color/legal_blue"
+                    android:background="@drawable/bg_chip"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="4dp"
+                    android:layout_marginEnd="8dp"
+                    tools:text="Criminal" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvCourt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="District Court, Delhi"
+                android:textSize="13sp"
+                android:textColor="@color/gray"
+                android:layout_marginTop="8dp"
+                android:drawableStart="@drawable/ic_court"
+                android:drawablePadding="8dp"
+                android:drawableTint="@color/gray"
+                tools:text="District Court, Delhi" />
+
+            <TextView
+                android:id="@+id/tvNextHearing"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Next Hearing: 15 Nov 2025"
+                android:textSize="13sp"
+                android:textColor="@color/error_red"
+                android:textStyle="bold"
+                android:layout_marginTop="4dp"
+                android:drawableStart="@drawable/ic_calendar"
+                android:drawablePadding="8dp"
+                android:drawableTint="@color/error_red"
+                tools:text="Next Hearing: 15 Nov 2025" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

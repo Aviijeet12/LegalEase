@@ -42,4 +42,15 @@
     <color name="scrim">#99000000</color>
     <color name="error">#F44336</color>
     <color name="success">#4CAF50</color>
+    
+    <!-- Primary Colors -->
+    <color name="colorPrimary">#FF1976D2</color>
+    <color name="colorPrimaryDark">#FF004BA0</color>
+    <color name="colorAccent">#FFFF4081</color>
+    
+    <!-- Status Colors -->
+    <color name="status_active">#4CAF50</color>
+    <color name="status_inactive">#9E9E9E</color>
+    <color name="status_busy">#FF9800</color>
+    <color name="error_red">#F44336</color>
 </resources>

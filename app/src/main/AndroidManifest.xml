@@ -62,6 +62,42 @@
             android:name=".activities.ChatActivity"
             android:parentActivityName=".activities.MainActivity" />
         
+        <!-- New Client Dashboard Activities -->
+        <activity
+            android:name=".activities.DocumentsListActivity"
+            android:parentActivityName=".activities.MainActivity"
+            android:theme="@style/Theme.LegalEase.NoActionBar" />
+        <activity
+            android:name=".activities.HelpSupportActivity"
+            android:parentActivityName=".activities.MainActivity"
+            android:theme="@style/Theme.LegalEase.NoActionBar" />
+        <activity
+            android:name=".activities.CaseStatusActivity"
+            android:parentActivityName=".activities.MainActivity"
+            android:theme="@style/Theme.LegalEase.NoActionBar" />
+        <activity
+            android:name=".activities.AppointmentsActivity"
+            android:parentActivityName=".activities.MainActivity"
+            android:theme="@style/Theme.LegalEase.NoActionBar" />
+        <activity
+            android:name=".activities.LawyersListActivity"
+            android:parentActivityName=".activities.MainActivity"
+            android:theme="@style/Theme.LegalEase.NoActionBar" />
+        <activity
+            android:name=".activities.ContactLawyerActivity"
+            android:parentActivityName=".activities.LawyersListActivity"
+            android:theme="@style/Theme.LegalEase.NoActionBar" />
+        
+        <!-- Lawyer Dashboard Activities -->
+        <activity
+            android:name=".activities.LawyerCasesActivity"
+            android:parentActivityName=".activities.MainActivity"
+            android:theme="@style/Theme.LegalEase.NoActionBar" />
+        <activity
+            android:name=".activities.LawyerClientsActivity"
+            android:parentActivityName=".activities.MainActivity"
+            android:theme="@style/Theme.LegalEase.NoActionBar" />
+        
         <activity
             android:name=".ui.help.HelpCenterActivity"
             android:parentActivityName=".activities.MainActivity" />

@@ -12,13 +12,19 @@ import cm.avisingh.legalease.databinding.ActivityDocumentUploadBinding
 import cm.avisingh.legalease.utils.SharedPrefManager
 import java.io.File
 import cm.avisingh.legalease.utils.AnalyticsHelper
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.storage.FirebaseStorage
 
 class DocumentUploadActivity : AppCompatActivity() {
 
     private lateinit var analyticsHelper: AnalyticsHelper
     private lateinit var binding: ActivityDocumentUploadBinding
     private lateinit var sharedPrefManager: SharedPrefManager
+    private lateinit var storage: FirebaseStorage
+    private lateinit var firestore: FirebaseFirestore
     private var selectedFileUri: Uri? = null
+    private var selectedFileName: String = ""
+    private var selectedFileSize: Long = 0
 
     // Document types
     private val documentTypes = arrayOf(
@@ -54,9 +60,13 @@ class DocumentUploadActivity : AppCompatActivity() {
         binding = ActivityDocumentUploadBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        analyticsHelper = AnalyticsHelper(this)
         analyticsHelper.trackScreen(this::class.java.simpleName)
 
         sharedPrefManager = SharedPrefManager(this)
+        storage = FirebaseStorage.getInstance()
+        firestore = FirebaseFirestore.getInstance()
+        
         setupUI()
         setupClickListeners()
     }
@@ -109,17 +119,29 @@ class DocumentUploadActivity : AppCompatActivity() {
         selectedFileUri = uri
 
         // Get file info
-        val fileName = getFileName(uri)
+        selectedFileName = getFileName(uri)
+        selectedFileSize = getFileSizeBytes(uri)
         val fileSize = getFileSize(uri)
 
         // Update UI
-        binding.tvFileName.text = fileName
+        binding.tvFileName.text = selectedFileName
         binding.tvFileSize.text = fileSize
         binding.layoutSelectedFile.visibility = android.view.View.VISIBLE
         binding.btnUpload.isEnabled = true
 
         // Show success message
-        Toast.makeText(this, "File selected: $fileName", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "File selected: $selectedFileName", Toast.LENGTH_SHORT).show()
+    }
+    
+    private fun getFileSizeBytes(uri: Uri): Long {
+        var size = 0L
+        val cursor = contentResolver.query(uri, null, null, null, null)
+        cursor?.use {
+            if (it.moveToFirst()) {
+                size = it.getLong(it.getColumnIndexOrThrow(android.provider.OpenableColumns.SIZE))
+            }
+        }
+        return size
     }
 
     private fun getFileName(uri: Uri): String {
@@ -169,7 +191,8 @@ class DocumentUploadActivity : AppCompatActivity() {
             return
         }
 
-        if (selectedFileUri == null) {
+        val uri = selectedFileUri
+        if (uri == null) {
             Toast.makeText(this, "Please select a file to upload", Toast.LENGTH_SHORT).show()
             return
         }
@@ -178,11 +201,75 @@ class DocumentUploadActivity : AppCompatActivity() {
         binding.btnUpload.text = "Uploading..."
         binding.btnUpload.isEnabled = false
 
-        // Simulate upload process
-        android.os.Handler(android.os.Looper.getMainLooper()).postDelayed({
-            // Mock upload success
-            uploadSuccess()
-        }, 2000)
+        val userId = sharedPrefManager.getUserId()
+        val timestamp = System.currentTimeMillis()
+        val storageRef = storage.reference
+            .child("documents")
+            .child(userId)
+            .child("$timestamp-$selectedFileName")
+
+        // Upload file to Firebase Storage
+        storageRef.putFile(uri)
+            .addOnSuccessListener { taskSnapshot ->
+                // Get download URL
+                storageRef.downloadUrl.addOnSuccessListener { downloadUri ->
+                    saveDocumentMetadata(
+                        userId = userId,
+                        title = title,
+                        description = description,
+                        documentType = documentType,
+                        fileName = selectedFileName,
+                        fileSize = selectedFileSize,
+                        downloadUrl = downloadUri.toString(),
+                        storagePath = storageRef.path
+                    )
+                }
+            }
+            .addOnFailureListener { e ->
+                binding.btnUpload.text = "Upload Document"
+                binding.btnUpload.isEnabled = true
+                Toast.makeText(this, "Upload failed: ${e.message}", Toast.LENGTH_SHORT).show()
+            }
+    }
+
+    private fun saveDocumentMetadata(
+        userId: String,
+        title: String,
+        description: String,
+        documentType: String,
+        fileName: String,
+        fileSize: Long,
+        downloadUrl: String,
+        storagePath: String
+    ) {
+        val documentData = hashMapOf(
+            "userId" to userId,
+            "title" to title,
+            "description" to description,
+            "documentType" to documentType,
+            "fileName" to fileName,
+            "fileSize" to fileSize,
+            "downloadUrl" to downloadUrl,
+            "storagePath" to storagePath,
+            "uploadedAt" to System.currentTimeMillis(),
+            "uploadedBy" to sharedPrefManager.getUserName(),
+            "status" to "uploaded"
+        )
+
+        firestore.collection("documents")
+            .add(documentData)
+            .addOnSuccessListener {
+                analyticsHelper.trackEvent("document_uploaded", mapOf(
+                    "file_type" to documentType,
+                    "upload_success" to "true"
+                ))
+                uploadSuccess()
+            }
+            .addOnFailureListener { e ->
+                binding.btnUpload.text = "Upload Document"
+                binding.btnUpload.isEnabled = true
+                Toast.makeText(this, "Failed to save document: ${e.message}", Toast.LENGTH_SHORT).show()
+            }
     }
 
     private fun uploadSuccess() {

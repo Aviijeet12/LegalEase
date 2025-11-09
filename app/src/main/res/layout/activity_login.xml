@@ -111,7 +111,8 @@
             android:textSize="18sp"
             android:backgroundTint="@color/legal_blue"
             android:textColor="@color/white"
-            android:layout_marginBottom="16dp" />
+            android:layout_marginBottom="16dp"
+            android:paddingVertical="14dp" />
 
         <!-- Forgot Password -->
         <TextView
@@ -122,7 +123,54 @@
             android:textColor="@color/legal_blue"
             android:textSize="14sp"
             android:layout_gravity="center"
-            android:layout_marginBottom="32dp" />
+            android:layout_marginBottom="24dp" />
+
+        <!-- OR Divider -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="24dp">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:background="@color/gray" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="  OR  "
+                android:textColor="@color/gray"
+                android:textSize="14sp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:background="@color/gray" />
+        </LinearLayout>
+
+        <!-- Google Sign-In Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnGoogleSignIn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Continue with Google"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:paddingVertical="14dp"
+            app:icon="@drawable/ic_google"
+            app:iconGravity="textStart"
+            app:iconPadding="12dp"
+            app:iconTint="@null"
+            app:strokeColor="@color/gray"
+            app:strokeWidth="1dp"
+            app:backgroundTint="@color/white"
+            android:layout_marginBottom="32dp"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
 
         <!-- Sign Up Redirect -->
         <LinearLayout

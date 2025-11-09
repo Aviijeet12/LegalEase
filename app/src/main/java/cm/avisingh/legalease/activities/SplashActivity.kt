@@ -5,46 +5,29 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import cm.avisingh.legalease.activities.MainActivity
+import android.util.Log
 import cm.avisingh.legalease.R
-import cm.avisingh.legalease.utils.SharedPrefManager
-import cm.avisingh.legalease.utils.AnalyticsHelper
 
 class SplashActivity : AppCompatActivity() {
-
-    private lateinit var analyticsHelper: AnalyticsHelper
-    private lateinit var sharedPrefManager: SharedPrefManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-        // Initialize analytics helper
-        analyticsHelper = AnalyticsHelper(this)
-        analyticsHelper.trackScreen(this::class.java.simpleName)
+        Log.d("SplashActivity", "onCreate started")
 
-        sharedPrefManager = SharedPrefManager(this)
-
-        // Delay for 2 seconds then check user state
+        // Delay for 2 seconds then navigate to onboarding
         Handler(Looper.getMainLooper()).postDelayed({
-            checkUserState()
+            try {
+                Log.d("SplashActivity", "Navigating to OnboardingActivity")
+                val intent = Intent(this, OnboardingActivity::class.java)
+                startActivity(intent)
+                finish()
+                Log.d("SplashActivity", "Navigation complete")
+            } catch (e: Exception) {
+                Log.e("SplashActivity", "Error navigating", e)
+                e.printStackTrace()
+            }
         }, 2000)
-    }
-
-    private fun checkUserState() {
-        val intent = when {
-            sharedPrefManager.isFirstLaunch() -> {
-                Intent(this, OnboardingActivity::class.java)
-            }
-            sharedPrefManager.isLoggedIn() -> {
-                Intent(this, MainActivity::class.java)
-            }
-            else -> {
-                Intent(this, cm.avisingh.legalease.ui.auth.LoginActivity::class.java)
-            }
-        }
-
-        startActivity(intent)
-        finish()
     }
 }

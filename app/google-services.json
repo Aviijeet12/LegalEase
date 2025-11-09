@@ -12,7 +12,20 @@
           "package_name": "cm.avisingh.legalease"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "527572264345-2mpavptopi93ne2anvm2u70f973qusc6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "cm.avisingh.legalease",
+            "certificate_hash": "4c765ccc0f839ef74683b2aefe0b90071cc9a681"
+          }
+        },
+        {
+          "client_id": "527572264345-godv963ksg8lriinvmjhm1517hrh5v5t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyC0X8qRpQhAkhVu-NpCqgF8ub6rqNLoeJE"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "527572264345-godv963ksg8lriinvmjhm1517hrh5v5t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

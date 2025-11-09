@@ -39,4 +39,7 @@
     <string name="get_started">Get Started</string>
     <string name="next">Next</string>
     <string name="skip">Skip</string>
+    
+    <!-- Firebase Web Client ID - Replace with your actual web client ID from Firebase Console -->
+    <string name="default_web_client_id">527572264345-godv963ksg8lriinvmjhm1517hrh5v5t.apps.googleusercontent.com</string>
 </resources>
