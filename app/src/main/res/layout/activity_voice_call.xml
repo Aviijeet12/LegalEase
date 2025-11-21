@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="#0B2F4E"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="24dp">
+
+    <TextView
+        android:id="@+id/tvCallWith"
+        android:text="Calling Adv. A Sharma"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginTop="40dp"/>
+
+    <TextView
+        android:id="@+id/tvCallStatus"
+        android:text="Ringing..."
+        android:textColor="#D4AF37"
+        android:textSize="16sp"
+        android:layout_marginTop="8dp"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageButton
+            android:id="@+id/btnMute"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:src="@android:drawable/ic_lock_silent_mode"
+            android:tint="#FFFFFF"
+            android:background="@android:color/transparent"/>
+
+        <ImageButton
+            android:id="@+id/btnHangup"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:src="@android:drawable/ic_menu_close_clear_cancel"
+            android:tint="#FF4444"
+            android:layout_marginStart="40dp"
+            android:background="@android:color/transparent"/>
+    </LinearLayout>
+
+</LinearLayout>

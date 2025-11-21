@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="12dp"
+    android:background="#FFFFFF"
+    android:elevation="3dp"
+    android:layout_marginBottom="12dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:text="Appointment Title"
+        android:textStyle="bold"
+        android:textColor="#0B2F4E"/>
+
+    <TextView
+        android:id="@+id/tvTime"
+        android:text="11:00 AM"
+        android:textColor="#555555"
+        android:layout_marginTop="4dp"/>
+
+    <TextView
+        android:id="@+id/tvLawyer"
+        android:text="Adv. A Sharma"
+        android:textColor="#777777"
+        android:layout_marginTop="4dp"/>
+
+    <TextView
+        android:id="@+id/tvStatus"
+        android:text="Upcoming"
+        android:textColor="#D4AF37"
+        android:layout_marginTop="6dp"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btnChat"
+            android:layout_weight="1"
+            android:text="Chat"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:backgroundTint="#0B2F4E"
+            android:textColor="#FFFFFF"/>
+
+        <Button
+            android:id="@+id/btnViewDoc"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:text="View Doc"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:backgroundTint="#D4AF37"
+            android:textColor="#FFFFFF"/>
+    </LinearLayout>
+</LinearLayout>

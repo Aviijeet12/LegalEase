@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="16dp"
+    android:background="#F5F5F5"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- Title -->
+        <TextView
+            android:text="Help & Support"
+            android:textColor="#0B2F4E"
+            android:textSize="26sp"
+            android:textStyle="bold"/>
+
+        <!-- FAQ -->
+        <TextView
+            android:text="FAQ"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#0B2F4E"
+            android:layout_marginTop="20dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerFaq"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!-- Ticket -->
+        <Button
+            android:id="@+id/btnRaiseTicket"
+            android:text="Raise a Support Ticket"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#D4AF37"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"/>
+
+        <!-- Contact Options -->
+        <TextView
+            android:text="Contact Support"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#0B2F4E"
+            android:layout_marginTop="30dp"/>
+
+        <Button
+            android:id="@+id/btnEmailSupport"
+            android:text="Email Support"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#0B2F4E"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"/>
+
+        <Button
+            android:id="@+id/btnCallSupport"
+            android:text="Call Support"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#0B2F4E"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"/>
+
+        <Button
+            android:id="@+id/btnChatSupport"
+            android:text="Chat with Support"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#0B2F4E"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"/>
+
+    </LinearLayout>
+</ScrollView>

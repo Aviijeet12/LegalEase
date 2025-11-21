@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#F5F5F5"
+    android:padding="20dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="Book Appointment"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:textColor="#0B2F4E"
+            android:layout_marginBottom="20dp" />
+
+        <!-- Lawyer -->
+        <AutoCompleteTextView
+            android:id="@+id/dropdownLawyer"
+            android:hint="Select Lawyer"
+            android:background="#FFFFFF"
+            android:padding="14dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Date -->
+        <Button
+            android:id="@+id/btnSelectDate"
+            android:text="Select Date"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#0B2F4E"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+
+        <TextView
+            android:id="@+id/tvSelectedDate"
+            android:text="No date selected"
+            android:textColor="#555555"
+            android:layout_marginTop="8dp" />
+
+        <View android:layout_height="14dp" android:layout_width="match_parent" />
+
+        <!-- Time -->
+        <Button
+            android:id="@+id/btnSelectTime"
+            android:text="Select Time"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#D4AF37"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+
+        <TextView
+            android:id="@+id/tvSelectedTime"
+            android:text="No time selected"
+            android:textColor="#555555"
+            android:layout_marginTop="8dp" />
+
+        <View android:layout_height="20dp" android:layout_width="match_parent" />
+
+        <!-- Reason -->
+        <EditText
+            android:id="@+id/etReason"
+            android:hint="Reason / Notes"
+            android:background="#FFFFFF"
+            android:padding="14dp"
+            android:minLines="4"
+            android:gravity="top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <View android:layout_height="20dp" />
+
+        <!-- Confirm -->
+        <Button
+            android:id="@+id/btnConfirmAppointment"
+            android:text="Confirm Appointment"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#0B2F4E"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+
+    </LinearLayout>
+</ScrollView>

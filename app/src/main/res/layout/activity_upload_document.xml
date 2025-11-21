@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="20dp"
+    android:orientation="vertical"
+    android:background="#F5F5F5"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:text="Upload Document"
+        android:textColor="#0B2F4E"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="16dp"/>
+
+    <EditText
+        android:id="@+id/etDocTitle"
+        android:hint="Document Title"
+        android:background="#FFFFFF"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:paddingStart="16dp"
+        android:layout_marginBottom="16dp"/>
+
+    <Button
+        android:id="@+id/btnChooseFile"
+        android:text="Choose File"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#0B2F4E"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginBottom="16dp"/>
+
+    <Button
+        android:id="@+id/btnUploadNow"
+        android:text="Upload Now"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#D4AF37"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"/>
+</LinearLayout>
+

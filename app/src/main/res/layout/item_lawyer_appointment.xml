@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#FFFFFF"
+    android:elevation="4dp"
+    android:padding="16dp"
+    android:orientation="vertical"
+    android:layout_marginBottom="14dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <!-- Client Name -->
+    <TextView
+        android:id="@+id/tvClientName"
+        android:text="Client Name"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="#0B2F4E" />
+
+    <!-- Purpose -->
+    <TextView
+        android:id="@+id/tvPurpose"
+        android:text="Purpose of Meeting"
+        android:textColor="#555555"
+        android:layout_marginTop="6dp"/>
+
+    <!-- Date + Time -->
+    <TextView
+        android:id="@+id/tvDate"
+        android:text="Date"
+        android:textColor="#777777"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:id="@+id/tvTime"
+        android:text="Time"
+        android:textColor="#777777"/>
+
+    <!-- Meeting Type -->
+    <TextView
+        android:id="@+id/tvMeetingType"
+        android:text="Video Call"
+        android:textStyle="bold"
+        android:textColor="#D4AF37"
+        android:layout_marginTop="10dp"/>
+
+    <!-- Status -->
+    <TextView
+        android:id="@+id/tvStatus"
+        android:text="Upcoming"
+        android:background="#D4AF37"
+        android:textColor="#FFFFFF"
+        android:padding="6dp"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"/>
+
+    <!-- Action Buttons -->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_marginTop="14dp"
+        android:weightSum="3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btnJoinCall"
+            android:text="Join Call"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#0B2F4E"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="48dp"/>
+
+        <Button
+            android:id="@+id/btnMarkComplete"
+            android:text="Complete"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#D4AF37"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:layout_width="0dp"
+            android:layout_height="48dp"/>
+
+        <Button
+            android:id="@+id/btnCancel"
+            android:text="Cancel"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#B00020"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:layout_width="0dp"
+            android:layout_height="48dp"/>
+    </LinearLayout>
+</LinearLayout>

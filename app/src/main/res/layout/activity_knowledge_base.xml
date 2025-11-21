@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#F5F5F5"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:text="Legal Resources"
+        android:textColor="#0B2F4E"
+        android:textStyle="bold"
+        android:textSize="26sp"/>
+
+    <EditText
+        android:id="@+id/etSearch"
+        android:hint="Search articles..."
+        android:padding="12dp"
+        android:layout_marginTop="14dp"
+        android:background="#FFFFFF"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"/>
+
+    <TextView
+        android:text="Categories"
+        android:textColor="#0B2F4E"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerCategories"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"/>
+
+    <TextView
+        android:text="Articles"
+        android:textColor="#0B2F4E"
+        android:textStyle="bold"
+        android:layout_marginTop="18dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerArticles"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</LinearLayout>

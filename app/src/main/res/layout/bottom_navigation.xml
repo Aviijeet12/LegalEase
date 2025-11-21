@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="65dp"
+    android:background="@color/white"
+    android:padding="10dp"
+    android:elevation="10dp">
+
+    <LinearLayout
+        android:id="@+id/navHome"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:src="@drawable/ic_home"
+            android:tint="@color/primary"/>
+
+        <TextView android:text="Home"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/navProfile"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:src="@drawable/ic_profile"
+            android:tint="@color/muted"/>
+
+        <TextView android:text="Profile"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/navSettings"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:src="@drawable/ic_settings"
+            android:tint="@color/muted"/>
+
+        <TextView android:text="Settings"/>
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="#FFFFFF"
+    android:elevation="4dp"
+    android:padding="12dp"
+    android:layout_marginBottom="12dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:text="Case Title"
+        android:textStyle="bold"
+        android:textColor="#0B2F4E"
+        android:textSize="18sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/tvCaseId"
+        android:text="CASE0001"
+        android:textColor="#777777"
+        android:layout_marginTop="4dp"/>
+
+    <TextView
+        android:id="@+id/tvClient"
+        android:text="Client Name"
+        android:textColor="#555555"
+        android:layout_marginTop="4dp"/>
+
+    <TextView
+        android:id="@+id/tvLastUpdated"
+        android:text="Last updated: 12 Jan 2025"
+        android:textColor="#777777"
+        android:layout_marginTop="4dp"/>
+
+    <TextView
+        android:id="@+id/tvStatus"
+        android:text="Open"
+        android:background="#D4AF37"
+        android:textColor="#000000"
+        android:padding="6dp"
+        android:layout_marginTop="8dp"
+        android:layout_width="wrap_content" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:weightSum="3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btnOpen"
+            android:text="Open"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:backgroundTint="#0B2F4E"
+            android:textColor="#FFFFFF"/>
+
+        <Button
+            android:id="@+id/btnViewDoc"
+            android:text="Documents"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:backgroundTint="#D4AF37"
+            android:textColor="#FFFFFF"/>
+
+        <Button
+            android:id="@+id/btnChangeStatus"
+            android:text="Change Status"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:backgroundTint="#0B2F4E"
+            android:textColor="#FFFFFF"/>
+    </LinearLayout>
+</LinearLayout>

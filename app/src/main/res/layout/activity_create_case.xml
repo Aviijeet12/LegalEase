@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#F5F5F5"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:padding="20dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- Title -->
+        <TextView
+            android:text="Create New Case"
+            android:textSize="26sp"
+            android:textColor="#0B2F4E"
+            android:textStyle="bold"
+            android:layout_marginBottom="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <!-- Case Title -->
+        <EditText
+            android:id="@+id/etCaseTitle"
+            android:hint="Case Title"
+            android:background="#FFFFFF"
+            android:padding="14dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- Case Type -->
+        <AutoCompleteTextView
+            android:id="@+id/dropdownCaseType"
+            android:hint="Case Type"
+            android:background="#FFFFFF"
+            android:padding="14dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- Description -->
+        <EditText
+            android:id="@+id/etDescription"
+            android:hint="Short Description"
+            android:background="#FFFFFF"
+            android:padding="14dp"
+            android:minLines="4"
+            android:gravity="top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- Upload Document -->
+        <Button
+            android:id="@+id/btnChooseFile"
+            android:text="Upload Document"
+            android:backgroundTint="#0B2F4E"
+            android:textColor="#FFFFFF"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- List of Uploaded Docs -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerUploadedDocs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:nestedScrollingEnabled="false"
+            android:layout_marginBottom="20dp"/>
+
+        <!-- Submit Button -->
+        <Button
+            android:id="@+id/btnSubmitCase"
+            android:text="Submit Case"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#D4AF37"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"/>
+
+    </LinearLayout>
+</ScrollView>

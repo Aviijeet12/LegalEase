@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#FFFFFF"
+    android:elevation="4dp"
+    android:padding="16dp"
+    android:layout_marginBottom="16dp">
+
+    <TextView
+        android:id="@+id/tvCaseTitle"
+        android:text="Case Title"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="#0B2F4E" />
+
+    <TextView
+        android:id="@+id/tvCaseId"
+        android:text="CASE12345"
+        android:textColor="#555555"
+        android:layout_marginTop="4dp" />
+
+    <TextView
+        android:id="@+id/tvLawyerName"
+        android:text="Adv. A Sharma"
+        android:layout_marginTop="4dp"
+        android:textColor="#000000" />
+
+    <TextView
+        android:id="@+id/tvLastUpdated"
+        android:text="Last Updated: 10 Jan 2025"
+        android:textColor="#555555"
+        android:layout_marginTop="4dp" />
+
+    <!-- Status Badge -->
+    <TextView
+        android:id="@+id/tvStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Open"
+        android:textColor="#FFFFFF"
+        android:padding="4dp"
+        android:layout_marginTop="6dp"
+        android:background="#4CAF50" />
+
+    <Button
+        android:id="@+id/btnViewDetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="View Details"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#D4AF37"
+        android:layout_marginTop="12dp"/>
+</LinearLayout>

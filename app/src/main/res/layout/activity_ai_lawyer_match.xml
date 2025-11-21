@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!-- Screen Title -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="AI Lawyer Match"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="#0B2F4E"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Subtitle -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Get the most suitable lawyer instantly based on rating, pricing, and specialization."
+            android:textColor="#555555"
+            android:textSize="14sp"
+            android:layout_marginBottom="20dp" />
+
+        <!-- Lawyer Type -->
+        <com.google.android.material.textfield.MaterialAutoCompleteTextView
+            android:id="@+id/dropdownLawyerType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Choose Lawyer Type"
+            android:background="@android:color/white"
+            android:padding="12dp"
+            android:elevation="4dp"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- Price Range -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Maximum Price (per consultation)"
+            android:textColor="#0B2F4E"
+            android:layout_marginBottom="6dp" />
+
+        <SeekBar
+            android:id="@+id/seekPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="5000"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Rating -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Minimum Rating"
+            android:textColor="#0B2F4E"
+            android:layout_marginBottom="6dp" />
+
+        <SeekBar
+            android:id="@+id/seekRating"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="5"
+            android:layout_marginBottom="20dp" />
+
+        <!-- Button -->
+        <Button
+            android:id="@+id/btnFindMatch"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:text="Find Best Match"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:backgroundTint="#D4AF37"
+            android:layout_marginBottom="20dp" />
+
+        <!-- Result Card -->
+        <LinearLayout
+            android:id="@+id/cardResult"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#FFFFFF"
+            android:elevation="5dp"
+            android:padding="16dp"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Recommended Lawyer"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:textColor="#0B2F4E" />
+
+            <TextView
+                android:id="@+id/tvLawyerName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Adv. A Sharma"
+                android:textColor="#000000"
+                android:layout_marginTop="8dp" />
+
+            <TextView
+                android:id="@+id/tvLawyerDetails"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="⭐ 4.8   ₹1200   Civil Law"
+                android:textColor="#555555"
+                android:layout_marginTop="4dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#F5F5F5"
+    android:padding="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout 
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- Case Header -->
+        <TextView
+            android:id="@+id/tvCaseTitle"
+            android:text="Case Title"
+            android:textColor="#0B2F4E"
+            android:textStyle="bold"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/tvCaseId"
+            android:text="CASE ID"
+            android:textColor="#777777"
+            android:layout_marginTop="4dp"/>
+
+        <TextView
+            android:id="@+id/tvCaseStatus"
+            android:text="Open"
+            android:textColor="#FFFFFF"
+            android:background="#D4AF37"
+            android:padding="6dp"
+            android:layout_marginTop="8dp"
+            android:layout_width="wrap_content"/>
+
+        <!-- Client Details -->
+        <LinearLayout
+            android:orientation="vertical"
+            android:background="#FFFFFF"
+            android:padding="14dp"
+            android:elevation="4dp"
+            android:layout_marginTop="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tvClientName"
+                android:text="Client Name"
+                android:textStyle="bold"
+                android:textColor="#0B2F4E"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tvClientPhone"
+                android:text="Phone:"
+                android:textColor="#777777"
+                android:layout_marginTop="6dp"/>
+
+            <TextView
+                android:id="@+id/tvClientEmail"
+                android:text="Email:"
+                android:textColor="#777777"
+                android:layout_marginTop="2dp"/>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:weightSum="2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/btnClientCall"
+                    android:text="Call Client"
+                    android:layout_weight="1"
+                    android:textColor="#FFFFFF"
+                    android:backgroundTint="#0B2F4E"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"/>
+
+                <Button
+                    android:id="@+id/btnClientChat"
+                    android:text="Message"
+                    android:layout_weight="1"
+                    android:layout_marginStart="10dp"
+                    android:textColor="#FFFFFF"
+                    android:backgroundTint="#D4AF37"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Timeline -->
+        <TextView
+            android:text="Timeline"
+            android:textColor="#0B2F4E"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:layout_marginTop="20dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerTimeline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:nestedScrollingEnabled="false"/>
+
+        <!-- Documents -->
+        <TextView
+            android:text="Documents"
+            android:textColor="#0B2F4E"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:layout_marginTop="20dp"/>
+
+        <Button
+            android:id="@+id/btnUploadDocument"
+            android:text="Upload Document"
+            android:backgroundTint="#0B2F4E"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerDocuments"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:nestedScrollingEnabled="false"/>
+
+        <!-- Notes -->
+        <TextView
+            android:text="Case Notes"
+            android:textColor="#0B2F4E"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:layout_marginTop="20dp"/>
+
+        <EditText
+            android:id="@+id/etNotes"
+            android:hint="Write notes here..."
+            android:minLines="4"
+            android:background="#FFFFFF"
+            android:padding="12dp"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_marginTop="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/btnAddHearing"
+                android:text="Add Hearing Date"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#D4AF37"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="48dp"/>
+
+            <Button
+                android:id="@+id/btnAddNextStep"
+                android:text="Add Next Step"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#0B2F4E"
+                android:layout_weight="1"
+                android:layout_marginStart="10dp"
+                android:layout_width="0dp"
+                android:layout_height="48dp"/>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

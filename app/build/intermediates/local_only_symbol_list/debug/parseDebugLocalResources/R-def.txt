@@ -1,0 +1,26 @@
+R_DEF: Internal format may change without notice
+local
+id btnClient
+id btnLawyer
+id btnPrimary
+id etConfirmPassword
+id etEmail
+id etPassword
+id tilConfirmPassword
+id tilEmail
+id tilPassword
+id toggleRole
+id tvSwitchMode
+id tvTitle
+layout activity_login
+string app_name
+string client
+string confirm_password
+string email
+string lawyer
+string login
+string password
+string signup
+string switch_to_login
+string switch_to_signup
+style Theme.LawClientAuth

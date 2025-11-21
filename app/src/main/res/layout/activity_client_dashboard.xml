@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!-- Welcome -->
+        <TextView
+            android:id="@+id/tvWelcome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Welcome, Client"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:textColor="#0B2F4E"
+            android:layout_marginBottom="20dp" />
+
+        <!-- AI Lawyer Match -->
+        <LinearLayout
+            android:id="@+id/cardAiMatch"
+            android:layout_width="match_parent"
+            android:layout_height="110dp"
+            android:background="#FFFFFF"
+            android:elevation="5dp"
+            android:padding="16dp"
+            android:orientation="vertical"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="AI Lawyer Match"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#0B2F4E" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Get matched to the best lawyer based on rating, price & expertise"
+                android:textColor="#555555"
+                android:layout_marginTop="4dp" />
+        </LinearLayout>
+
+        <!-- Recommended Lawyers Carousel -->
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_marginBottom="16dp">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:padding="4dp">
+
+                <LinearLayout
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:background="#FFFFFF"
+                    android:elevation="4dp"
+                    android:padding="12dp"
+                    android:layout_marginEnd="12dp"
+                    android:orientation="vertical">
+
+                    <TextView android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Adv. A Sharma"
+                        android:textStyle="bold"
+                        android:textColor="#0B2F4E"/>
+
+                    <TextView android:text="⭐ 4.8  ₹1200"
+                        android:textColor="#555555"
+                        android:layout_marginTop="4dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:background="#FFFFFF"
+                    android:elevation="4dp"
+                    android:padding="12dp"
+                    android:layout_marginEnd="12dp"
+                    android:orientation="vertical">
+
+                    <TextView android:text="Adv. R Mehra"
+                        android:textColor="#0B2F4E"
+                        android:textStyle="bold"/>
+
+                    <TextView android:text="⭐ 4.6  ₹900"
+                        android:textColor="#555555"
+                        android:layout_marginTop="4dp"/>
+                </LinearLayout>
+
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <!-- Normal Cards -->
+        <LinearLayout
+            android:id="@+id/cardFindLawyer"
+            android:layout_width="match_parent"
+            android:layout_height="95dp"
+            android:background="#FFFFFF"
+            android:elevation="4dp"
+            android:padding="16dp"
+            android:orientation="vertical"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:text="Find Lawyers"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:textColor="#0B2F4E" />
+
+            <TextView
+                android:text="Browse lawyers by category & expertise"
+                android:textColor="#555555"
+                android:layout_marginTop="4dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/cardMyCases"
+            android:layout_width="match_parent"
+            android:layout_height="95dp"
+            android:background="#FFFFFF"
+            android:elevation="4dp"
+            android:padding="16dp"
+            android:orientation="vertical"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:text="My Cases"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:textColor="#0B2F4E" />
+
+            <TextView
+                android:text="Track ongoing legal matters"
+                android:textColor="#555555"
+                android:layout_marginTop="4dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/cardAppointments"
+            android:layout_width="match_parent"
+            android:layout_height="95dp"
+            android:background="#FFFFFF"
+            android:elevation="4dp"
+            android:padding="16dp"
+            android:orientation="vertical"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:text="Appointments"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:textColor="#0B2F4E" />
+
+            <TextView
+                android:text="Manage your consultations"
+                android:textColor="#555555"
+                android:layout_marginTop="4dp" />
+        </LinearLayout>
+
+        <!-- Payments -->
+        <LinearLayout
+            android:id="@+id/cardPayments"
+            android:layout_width="match_parent"
+            android:layout_height="95dp"
+            android:background="#FFFFFF"
+            android:elevation="4dp"
+            android:padding="16dp"
+            android:orientation="vertical"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:text="Payments"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:textColor="#0B2F4E" />
+
+            <TextView
+                android:text="View past payment history"
+                android:textColor="#555555"
+                android:layout_marginTop="4dp" />
+        </LinearLayout>
+
+        <!-- Invoices -->
+        <LinearLayout
+            android:id="@+id/cardInvoices"
+            android:layout_width="match_parent"
+            android:layout_height="95dp"
+            android:background="#FFFFFF"
+            android:elevation="4dp"
+            android:padding="16dp"
+            android:orientation="vertical"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:text="Invoices"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:textColor="#0B2F4E" />
+
+            <TextView
+                android:text="Download your legal invoices"
+                android:textColor="#555555"
+                android:layout_marginTop="4dp" />
+        </LinearLayout>
+
+        <!-- Saved Lawyers -->
+        <LinearLayout
+            android:id="@+id/cardSavedLawyers"
+            android:layout_width="match_parent"
+            android:layout_height="95dp"
+            android:background="#FFFFFF"
+            android:elevation="4dp"
+            android:padding="16dp"
+            android:orientation="vertical"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:text="Saved Lawyers"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:textColor="#0B2F4E" />
+
+            <TextView
+                android:text="Your bookmarked lawyers"
+                android:textColor="#555555"
+                android:layout_marginTop="4dp" />
+        </LinearLayout>
+
+        <!-- Recent Activity -->
+        <LinearLayout
+            android:id="@+id/cardRecentActivity"
+            android:layout_width="match_parent"
+            android:layout_height="95dp"
+            android:background="#FFFFFF"
+            android:elevation="4dp"
+            android:padding="16dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:text="Recent Activity"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:textColor="#0B2F4E" />
+
+            <TextView
+                android:text="View your recent actions"
+                android:textColor="#555555"
+                android:layout_marginTop="4dp" />
+        </LinearLayout>
+
+        <!-- Bottom Nav -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="#FFFFFF"
+            android:elevation="8dp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="24dp">
+
+            <TextView
+                android:id="@+id/navHome"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Home"
+                android:textColor="#0B2F4E"
+                android:gravity="center" />
+
+            <TextView
+                android:id="@+id/navCases"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Cases"
+                android:textColor="#555555"
+                android:gravity="center" />
+
+            <TextView
+                android:id="@+id/navProfile"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Profile"
+                android:textColor="#555555"
+                android:gravity="center" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

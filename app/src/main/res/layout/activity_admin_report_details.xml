@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView  
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="20dp"
+    android:background="#FFFFFF"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:text="Report Title"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#0B2F4E"/>
+
+        <TextView
+            android:id="@+id/tvFiledBy"
+            android:text="Filed by:"
+            android:layout_marginTop="8dp"
+            android:textColor="#555555"/>
+
+        <TextView
+            android:id="@+id/tvCategory"
+            android:text="Category:"
+            android:layout_marginTop="6dp"
+            android:textColor="#D4AF37"/>
+
+        <TextView
+            android:id="@+id/tvDescription"
+            android:textColor="#333333"
+            android:layout_marginTop="16dp"/>
+
+        <Button
+            android:id="@+id/btnResolve"
+            android:text="Mark as Resolved"
+            android:layout_marginTop="24dp"
+            android:backgroundTint="#0B2F4E"
+            android:textColor="#FFFFFF"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"/>
+    </LinearLayout>
+</ScrollView>

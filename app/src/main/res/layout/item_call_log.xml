@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:padding="12dp"
+    android:layout_marginBottom="10dp"
+    android:elevation="3dp"
+    android:background="#FFFFFF"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/ivType"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:tint="#0B2F4E"
+        android:src="@drawable/ic_audio_call"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_marginStart="14dp"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvName"
+            android:text="Adv. Ananya"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#0B2F4E"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_marginTop="6dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/ivDirection"
+                android:src="@drawable/ic_arrow_in"
+                android:tint="#777777"
+                android:layout_width="16dp"
+                android:layout_height="16dp"/>
+
+            <TextView
+                android:id="@+id/tvDuration"
+                android:layout_marginStart="8dp"
+                android:text="1m 20s"
+                android:textColor="#777777"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvTime"
+        android:text="10:25 AM"
+        android:textSize="12sp"
+        android:textColor="#777777"
+        android:layout_gravity="center_vertical"/>
+</LinearLayout>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="http://schemas.android.com/tools">
+    <string name="app_name">LawClientAuth</string>
+    <string name="client">Client</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="email">Email</string>
+    <string name="lawyer">Lawyer</string>
+    <string name="login">Login</string>
+    <string name="password">Password</string>
+    <string name="signup">Sign Up</string>
+    <string name="switch_to_login">Already have an account? Login</string>
+    <string name="switch_to_signup">Don't have an account? Sign up</string>
+    <style name="Theme.LawClientAuth" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <item name="android:statusBarColor" ns1:targetApi="l">@color/purple_700</item>
+    </style>
+</resources>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#F5F5F5"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tvDateHeader"
+        android:text="Appointments on yyyy-mm-dd"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="#0B2F4E" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerForDate"
+        android:layout_marginTop="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</LinearLayout>

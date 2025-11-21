@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#F5F5F5"
+    android:padding="16dp"
+    android:fillViewport="true"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- App Title -->
+        <TextView
+            android:text="Legal Ease"
+            android:textColor="#0B2F4E"
+            android:textStyle="bold"
+            android:textSize="32sp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <!-- Tabs -->
+        <LinearLayout
+            android:id="@+id/layoutTabs"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:padding="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tabLogin"
+                android:text="Login"
+                android:textColor="#0B2F4E"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:padding="12dp"
+                android:background="#D4AF37"
+                android:layout_marginEnd="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tabSignup"
+                android:text="Signup"
+                android:textColor="#0B2F4E"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:padding="12dp"
+                android:background="#E0E0E0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <!-- ---------------------- -->
+        <!-- ROLE SELECTION -->
+        <!-- ---------------------- -->
+
+        <TextView
+            android:text="Select Role"
+            android:textColor="#0B2F4E"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <RadioGroup
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/radioClient"
+                android:text="Client"
+                android:checked="true"
+                android:textColor="#0B2F4E"
+                android:padding="6dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <RadioButton
+                android:id="@+id/radioLawyer"
+                android:text="Lawyer"
+                android:textColor="#0B2F4E"
+                android:padding="6dp"
+                android:layout_marginStart="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </RadioGroup>
+
+        <!-- ---------------------- -->
+        <!-- LOGIN SECTION -->
+        <!-- ---------------------- -->
+
+        <LinearLayout
+            android:id="@+id/layoutLogin"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/etLoginEmail"
+                android:hint="Email"
+                android:padding="12dp"
+                android:background="#FFFFFF"
+                android:layout_marginBottom="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"/>
+
+            <EditText
+                android:id="@+id/etLoginPassword"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:padding="12dp"
+                android:background="#FFFFFF"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"/>
+
+            <Button
+                android:id="@+id/btnLogin"
+                android:text="Login"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#0B2F4E"
+                android:layout_marginTop="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"/>
+
+        </LinearLayout>
+
+        <!-- ---------------------- -->
+        <!-- SIGNUP SECTION -->
+        <!-- ---------------------- -->
+
+        <LinearLayout
+            android:id="@+id/layoutSignup"
+            android:visibility="gone"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/etSignupName"
+                android:hint="Full Name"
+                android:padding="12dp"
+                android:background="#FFFFFF"
+                android:layout_marginBottom="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"/>
+
+            <EditText
+                android:id="@+id/etSignupEmail"
+                android:hint="Email"
+                android:padding="12dp"
+                android:background="#FFFFFF"
+                android:layout_marginBottom="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"/>
+
+            <EditText
+                android:id="@+id/etSignupPassword"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:padding="12dp"
+                android:background="#FFFFFF"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"/>
+
+            <Button
+                android:id="@+id/btnSignup"
+                android:text="Signup"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#D4AF37"
+                android:layout_marginTop="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

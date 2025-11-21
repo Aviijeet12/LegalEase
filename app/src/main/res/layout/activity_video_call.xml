@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#000000"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Remote view placeholder -->
+    <View
+        android:id="@+id/remoteSurface"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#101820"/>
+
+    <!-- Local small preview -->
+    <View
+        android:id="@+id/localSurface"
+        android:layout_width="120dp"
+        android:layout_height="160dp"
+        android:layout_margin="16dp"
+        android:layout_gravity="top|end"
+        android:background="#202020"
+        android:elevation="8dp"/>
+
+    <!-- Controls (bottom center) -->
+    <LinearLayout
+        android:layout_gravity="bottom|center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:gravity="center">
+
+        <ImageButton
+            android:id="@+id/btnMute"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@android:drawable/ic_lock_silent_mode"
+            android:background="@android:color/transparent"
+            android:tint="#FFFFFF"
+            android:layout_margin="12dp"/>
+
+        <ImageButton
+            android:id="@+id/btnHangup"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@android:drawable/ic_menu_close_clear_cancel"
+            android:background="@android:color/transparent"
+            android:tint="#FF4444"
+            android:layout_margin="12dp"/>
+
+        <ImageButton
+            android:id="@+id/btnSwitchCam"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@android:drawable/ic_menu_camera"
+            android:background="@android:color/transparent"
+            android:tint="#FFFFFF"
+            android:layout_margin="12dp"/>
+    </LinearLayout>
+
+</FrameLayout>

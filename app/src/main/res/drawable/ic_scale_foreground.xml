@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Simple minimal balance scale -->
+    <path
+        android:fillColor="#D4AF37"  <!-- gold -->
+        android:pathData="M54,10 L54,24 M38,24 L70,24 M30,46 C30,46 38,40 54,40 C70,40 78,46 78,46" />
+    <!-- Base -->
+    <path
+        android:fillColor="#D4AF37"
+        android:pathData="M46,70 L62,70 L62,74 L46,74 Z"/>
+</vector>

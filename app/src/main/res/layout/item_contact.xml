@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:elevation="3dp"
+    android:padding="12dp"
+    android:background="#FFFFFF"
+    android:layout_marginBottom="12dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <!-- Avatar -->
+    <ImageView
+        android:id="@+id/imgAvatar"
+        android:src="@drawable/ic_profile_placeholder"
+        android:tint="#0B2F4E"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="12dp"/>
+
+    <!-- Text Section -->
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvName"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#0B2F4E"/>
+
+        <TextView
+            android:id="@+id/tvLastMessage"
+            android:textSize="14sp"
+            android:textColor="#777777"
+            android:layout_marginTop="4dp"/>
+
+        <TextView
+            android:id="@+id/tvRole"
+            android:padding="4dp"
+            android:layout_marginTop="6dp"
+            android:text="LAWYER"
+            android:textColor="#FFFFFF"
+            android:textSize="11sp"
+            android:background="@drawable/bg_badge_lawyer"/>
+    </LinearLayout>
+
+    <!-- Buttons Column -->
+    <LinearLayout
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+
+        <ImageButton
+            android:id="@+id/btnChat"
+            android:src="@android:drawable/ic_menu_send"
+            android:tint="#0B2F4E"
+            android:layout_width="36dp"
+            android:layout_height="36dp"/>
+
+        <ImageButton
+            android:id="@+id/btnCall"
+            android:src="@android:drawable/ic_menu_call"
+            android:tint="#0B2F4E"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="6dp"/>
+
+        <ImageButton
+            android:id="@+id/btnVideoCall"
+            android:src="@android:drawable/ic_menu_camera"
+            android:tint="#0B2F4E"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="6dp"/>
+    </LinearLayout>
+
+    <!-- Online Indicator -->
+    <ImageView
+        android:id="@+id/onlineIndicator"
+        android:src="@drawable/ic_online"
+        android:layout_marginLeft="8dp"
+        android:layout_gravity="bottom"
+        android:layout_width="12dp"
+        android:layout_height="12dp"/>
+</LinearLayout>

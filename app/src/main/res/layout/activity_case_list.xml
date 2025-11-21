@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:background="#F5F5F5">
+
+    <!-- Title -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="My Cases"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:textColor="#0B2F4E"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Search -->
+    <EditText
+        android:id="@+id/etSearchCase"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Search cases"
+        android:background="#FFFFFF"
+        android:paddingStart="16dp"
+        android:elevation="4dp"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Filters -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="20dp">
+
+        <com.google.android.material.textfield.MaterialAutoCompleteTextView
+            android:id="@+id/dropdownCaseType"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:hint="Case Type"
+            android:background="#FFFFFF"
+            android:paddingStart="16dp"
+            android:elevation="4dp"
+            android:layout_marginEnd="8dp" />
+
+        <com.google.android.material.textfield.MaterialAutoCompleteTextView
+            android:id="@+id/dropdownCaseStatus"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:hint="Status"
+            android:background="#FFFFFF"
+            android:paddingStart="16dp"
+            android:elevation="4dp" />
+    </LinearLayout>
+
+    <!-- RecyclerView -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerCases"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

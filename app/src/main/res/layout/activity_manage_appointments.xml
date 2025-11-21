@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#F5F5F5"
+    android:padding="18dp"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Title -->
+    <TextView
+        android:text="Manage Appointments"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:textColor="#0B2F4E"
+        android:layout_marginBottom="16dp"
+        />
+
+    <!-- Filter Dropdown -->
+    <AutoCompleteTextView
+        android:id="@+id/dropdownFilter"
+        android:hint="Filter by Status"
+        android:background="#FFFFFF"
+        android:padding="14dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Appointment List -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerManageAppointments"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

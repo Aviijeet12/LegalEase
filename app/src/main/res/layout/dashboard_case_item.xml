@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#FFFFFF"
+    android:elevation="4dp"
+    android:padding="14dp"
+    android:layout_marginBottom="10dp"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tvCaseTitle"
+        android:text="Case #001"
+        android:textColor="#0B2F4E"
+        android:textStyle="bold"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:id="@+id/tvCaseType"
+        android:text="Case Type"
+        android:textColor="#777777"
+        android:layout_marginTop="4dp" />
+
+    <TextView
+        android:id="@+id/tvCaseStatus"
+        android:text="In Progress"
+        android:background="#D4AF37"
+        android:textColor="#FFFFFF"
+        android:padding="6dp"
+        android:layout_marginTop="8dp"
+        android:layout_width="wrap_content"/>
+</LinearLayout>

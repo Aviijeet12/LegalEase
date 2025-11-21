@@ -1,0 +1,98 @@
+<?xml
+ version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="20dp"
+    android:layout_width="match_parent"
+    android:background="@color/surface"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:padding="14dp"
+            android:background="@color/white"
+            android:layout_marginBottom="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="Dark Mode"
+                android:layout_weight="1"
+                android:textSize="18sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+            <Switch
+                android:id="@+id/switchDarkMode"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:padding="14dp"
+            android:background="@color/white"
+            android:layout_marginBottom="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="App Lock (Biometric)"
+                android:layout_weight="1"
+                android:textSize="18sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+            <Switch
+                android:id="@+id/switchBiometric"/>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnPrivacyPolicy"
+            android:text="Privacy Policy"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/primary"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"/>
+
+        <Button
+            android:id="@+id/btnTerms"
+            android:text="Terms & Conditions"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/primary"
+            android:layout_marginTop="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"/>
+
+        <Button
+            android:id="@+id/btnAbout"
+            android:text="About"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/accent"
+            android:layout_marginTop="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"/>
+
+        <Button
+            android:id="@+id/btnLogout"
+            android:text="Logout"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/danger"
+            android:layout_marginTop="14dp"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"/>
+
+        <Button
+            android:id="@+id/btnDeleteAccount"
+            android:text="Delete Account"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/muted"
+            android:layout_marginTop="14dp"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"/>
+
+    </LinearLayout>
+
+</ScrollView>

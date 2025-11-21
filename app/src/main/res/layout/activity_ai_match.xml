@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#F5F5F5"
+    android:padding="20dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- Title -->
+        <TextView
+            android:text="AI Lawyer Matching"
+            android:textSize="26sp"
+            android:textColor="#0B2F4E"
+            android:textStyle="bold"
+            android:layout_marginBottom="18dp"/>
+
+        <!-- Search -->
+        <EditText
+            android:id="@+id/etSearch"
+            android:hint="Search lawyers"
+            android:background="#FFFFFF"
+            android:padding="14dp"
+            android:elevation="4dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- Filters -->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="3">
+
+            <AutoCompleteTextView
+                android:id="@+id/dropdownType"
+                android:hint="Type"
+                android:padding="14dp"
+                android:background="#FFFFFF"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="8dp"/>
+
+            <AutoCompleteTextView
+                android:id="@+id/dropdownRating"
+                android:hint="Rating"
+                android:padding="14dp"
+                android:background="#FFFFFF"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="8dp"/>
+
+            <AutoCompleteTextView
+                android:id="@+id/dropdownPrice"
+                android:hint="Price"
+                android:padding="14dp"
+                android:background="#FFFFFF"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="50dp"/>
+        </LinearLayout>
+
+        <!-- Recycler -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerAiLawyers"
+            android:layout_marginTop="18dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+</ScrollView>

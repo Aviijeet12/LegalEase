@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="8dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_gravity="end"
+        android:orientation="vertical"
+        android:background="#0B2F4E"
+        android:padding="10dp"
+        android:elevation="2dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvFileName"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"/>
+
+        <Button
+            android:id="@+id/btnOpen"
+            android:text="Open"
+            android:layout_marginTop="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:backgroundTint="#D4AF37"
+            android:textColor="#FFFFFF"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_marginTop="6dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tvTime"
+                android:textSize="11sp"
+                android:textColor="#D4AF37"/>
+
+            <TextView
+                android:id="@+id/tvStatus"
+                android:layout_marginStart="8dp"
+                android:textSize="11sp"
+                android:textColor="#D4AF37"/>
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

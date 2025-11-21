@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="Create Account"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="20dp"/>
+
+        <EditText
+            android:id="@+id/etName"
+            android:hint="Full Name"
+            android:layout_width="match_parent"
+            android:background="@drawable/edittext_bg"
+            android:padding="14dp"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:id="@+id/etEmail"
+            android:hint="Email"
+            android:layout_width="match_parent"
+            android:background="@drawable/edittext_bg"
+            android:padding="14dp"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:id="@+id/etPassword"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:layout_width="match_parent"
+            android:background="@drawable/edittext_bg"
+            android:padding="14dp"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/btnSignup"
+            android:text="Sign Up"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:backgroundTint="@color/primary"
+            android:textColor="@color/white"
+            android:layout_height="48dp"/>
+
+        <TextView
+            android:id="@+id/tvLogin"
+            android:text="Already have an account? Login"
+            android:textColor="@color/primary"
+            android:layout_marginTop="20dp" />
+
+    </LinearLayout>
+
+</ScrollView>

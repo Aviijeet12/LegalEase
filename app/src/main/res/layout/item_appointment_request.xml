@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="12dp"
+    android:background="#FFFFFF"
+    android:elevation="3dp"
+    android:layout_marginBottom="12dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tvClient"
+        android:text="Client Name"
+        android:textColor="#0B2F4E"
+        android:textStyle="bold"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tvDate"
+        android:text="2025-01-20"
+        android:layout_marginTop="4dp"
+        android:textColor="#777777" />
+
+    <TextView
+        android:id="@+id/tvTime"
+        android:text="11:00 AM"
+        android:textColor="#777777" />
+
+    <TextView
+        android:id="@+id/tvType"
+        android:text="Video Call"
+        android:textStyle="bold"
+        android:textColor="#D4AF37"
+        android:layout_marginTop="6dp" />
+
+    <TextView
+        android:id="@+id/tvReason"
+        android:text="Reason..."
+        android:textColor="#555555"
+        android:layout_marginTop="8dp" />
+
+    <TextView
+        android:id="@+id/tvStatus"
+        android:text="Pending"
+        android:layout_marginTop="8dp"
+        android:textColor="#0B2F4E"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:weightSum="3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btnAccept"
+            android:text="Accept"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:backgroundTint="#0B2F4E"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/btnReject"
+            android:text="Reject"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:backgroundTint="#F44336"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/btnViewClient"
+            android:text="Client"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:backgroundTint="#D4AF37"
+            android:textColor="#FFFFFF" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnViewDocs"
+        android:text="View Documents"
+        android:visibility="gone"
+        android:layout_marginTop="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:backgroundTint="#D4AF37"
+        android:textColor="#FFFFFF"/>
+</LinearLayout>

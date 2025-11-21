@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="12dp"
+    android:background="#F5F5F5"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Search row -->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="56dp">
+
+        <EditText
+            android:id="@+id/etSearch"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:hint="Search lawyers, cases, docs, appointments"
+            android:padding="12dp"
+            android:background="#FFFFFF"/>
+
+        <Button
+            android:id="@+id/btnSearch"
+            android:text="Search"
+            android:layout_marginStart="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:backgroundTint="#0B2F4E"
+            android:textColor="#FFFFFF"/>
+    </LinearLayout>
+
+    <!-- Filter dropdown -->
+    <AutoCompleteTextView
+        android:id="@+id/dropdownFilter"
+        android:layout_marginTop="10dp"
+        android:hint="Filter: All"
+        android:background="#FFFFFF"
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"/>
+
+    <!-- Recent / suggestions -->
+    <LinearLayout
+        android:id="@+id/layoutSuggestions"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:layout_marginTop="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="Recent searches"
+            android:textColor="#0B2F4E"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"/>
+
+        <ListView
+            android:id="@+id/listRecent"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:dividerHeight="8dp"/>
+    </LinearLayout>
+
+    <!-- Results -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerResults"
+        android:layout_marginTop="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <Button
+        android:id="@+id/btnLoadMore"
+        android:text="Load more"
+        android:layout_marginTop="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:visibility="gone"
+        android:backgroundTint="#D4AF37"
+        android:textColor="#FFFFFF"/>
+
+    <Button
+        android:id="@+id/btnClear"
+        android:text="Clear"
+        android:layout_marginTop="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:backgroundTint="#B71C1C"
+        android:textColor="#FFFFFF"/>
+
+</LinearLayout>

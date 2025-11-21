@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">LawClientAuth</string>
+    <string name="login">Login</string>
+    <string name="signup">Sign Up</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="lawyer">Lawyer</string>
+    <string name="client">Client</string>
+    <string name="switch_to_signup">Don&apos;t have an account? Sign up</string>
+    <string name="switch_to_login">Already have an account? Login</string>
+    <string name="app_name">LawClient</string>
+    <string name="action_export">Export</string>
+    <string name="no_items_yet">No items yet</string>
+    <string name="search_items">Search items...</string>
+</resources>
